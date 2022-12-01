@@ -12,53 +12,53 @@ namespace LyftAPI.Controllers
 
         [HttpGet]
         [Route("/lyft/api/user/profile")]
-        public Task<IActionResult> GetUser([FromQuery] string profile)
+        public Task<IActionResult> GetProfile([FromQuery] string profile)
         {
             throw new NotImplementedException();
         }
 
         [HttpGet]
         [Route("/lyft/api/user/rides")]
-        public Task<IActionResult>
+        public Task<IActionResult> GetRides([FromQuery] int limit)
         {
             throw new NotImplementedException();
         }
 
         [HttpPost]
         [Route("/lyft/api/user/rides")]
-        public Task<IActionResult> Get
+        public Task<IActionResult> NewRide([FromQuery] string? ride_info)
         {
         throw new NotImplementedException();
         }
 
         [HttpGet]
         [Route("/lyft/api/user/rides/{id}")]
-        public Task<IActionResult> 
+        public Task<IActionResult> GetRide([FromQuery] string ride_id)
         {
             throw new NotImplementedException();
         }
         [HttpPost]
         [Route("/lyft/api/user/rides/{id}/cancel")]
-        public Task<IActionResult> 
-        {
+        public Task<IActionResult> CancelRide([FromQuery] string? cancel_ride)
+    {
             throw new NotImplementedException();
         }
         [HttpGet]
         [Route("/lyft/api/user/rides/{id}/receipt")]
-        public Task<IActionResult> 
-        {
+        public Task<IActionResult> SetRideDestination([FromQuery] string coordinates, [FromQuery] string optional_address])
+{
             throw new NotImplementedException();
         }
         [HttpPut]
         [Route("/lyft/api/user/rides/{id}/rating")]
-        public Task<IActionResult> 
-        {
+        public Task<IActionResult> SetRideRating([FromQuery] string feedback)
+{
             throw new NotImplementedException();
         }
         [HttpPut]
         [Route("/lyft/api/user/rides/{id}/destination")]
-        public Task<IActionResult> 
-        {
+        public Task<IActionResult> GetRideReceipt([FromQuery] string id)
+{
             throw new NotImplementedException();
         }
     }
