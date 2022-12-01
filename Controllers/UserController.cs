@@ -28,7 +28,7 @@ namespace LyftAPI.Controllers
         [Route("/lyft/api/user/rides")]
         public Task<IActionResult> NewRide([FromQuery] string? ride_info)
         {
-        throw new NotImplementedException();
+            throw new NotImplementedException();
         }
 
         [HttpGet]
@@ -40,26 +40,34 @@ namespace LyftAPI.Controllers
         [HttpPost]
         [Route("/lyft/api/user/rides/{id}/cancel")]
         public Task<IActionResult> CancelRide([FromQuery] string? cancel_ride)
-    {
+        {
             throw new NotImplementedException();
         }
         [HttpGet]
         [Route("/lyft/api/user/rides/{id}/receipt")]
         public Task<IActionResult> SetRideDestination([FromQuery] string coordinates, [FromQuery] string optional_address])
-{
+        {
             throw new NotImplementedException();
-        }
+
         [HttpPut]
         [Route("/lyft/api/user/rides/{id}/rating")]
         public Task<IActionResult> SetRideRating([FromQuery] string feedback)
-{
+
+        {
             throw new NotImplementedException();
         }
+
         [HttpPut]
         [Route("/lyft/api/user/rides/{id}/destination")]
         public Task<IActionResult> GetRideReceipt([FromQuery] string id)
-{
+        {
             throw new NotImplementedException();
         }
+
+
+
     }
+    
 }
+
+
