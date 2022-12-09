@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: lyft-mock
+    namespace: mock
+    labels:
+        type: api-mock
+        mock: lyft
+spec:
+    ports:
+        - port: 80
+          name: http
+        - port: 443
+          name: https
+    selector:
+        type: api-mock
+        mock: lyft

@@ -1,22 +1,43 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+FROM --platform=amd64 mcr.microsoft.com/devcontainers/dotnet:0-6.0 AS builder
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
-WORKDIR /app
+ARG github_username
+ARG github_token
+ARG TARGETPLATFORM
+
+# Install tools
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get -y install --no-install-recommends default-jre
+
+
+WORKDIR /server
+
+RUN echo $github_token | base64
+RUN dotnet nuget add source --username $github_username --password $github_token --store-password-in-clear-text --name github "https://nuget.pkg.github.com/RideSaver/index.json"
+
+COPY LyftAPI.csproj .
+RUN dotnet restore
+
+# Copy all files
+COPY . .
+RUN dotnet publish -p:PublishProfile=PublishTrimmed --sc --os="linux-musl" -o publish
+
+FROM --platform=$TARGETPLATFORM alpine:3.16 AS runtime
+# Add labels to add information to the image
+LABEL org.opencontainers.image.source=https://github.com/RideSaver/MockAPI_Lyft
+LABEL org.opencontainers.image.description="Mock Lyft API for RideSaver"
+LABEL org.opencontainers.image.licenses=MIT
+
+# Add tags to define the api image
+
+# Add some libs required by .NET runtime
+RUN apk add --no-cache libstdc++ libintl
+
 EXPOSE 80
 EXPOSE 443
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY ["LyftAPI.csproj", "."]
-RUN dotnet restore "./LyftAPI.csproj"
-COPY . .
-WORKDIR "/src/."
-RUN dotnet build "LyftAPI.csproj" -c Release -o /app/build
-
-FROM build AS publish
-RUN dotnet publish "LyftAPI.csproj" -c Release -o /app/publish /p:UseAppHost=false
-
-FROM base AS final
+# Copy
 WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "LyftAPI.dll"]
+COPY --from=builder /server/publish ./
+
+ENTRYPOINT ["./LyftAPI", "--urls", "http://0.0.0.0:80"]
