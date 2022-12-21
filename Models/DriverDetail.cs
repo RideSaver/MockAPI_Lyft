@@ -1,18 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
-namespace LyftAPI.Model
+namespace LyftAPI.Models
 {
     public class DriverDetail
     {
         [Required]
-        //The driver's first name
-        public string first_name { get; set; }
+        public string? FirstName { get; set; }
         [Required]
-        //The driver's contact phone number. Must be E.164 formatted.
-        public string phone_number { get; set; }
-        [Required]
-        //The driver's rating based in 0-5 scale
-        public string rating { get; set; }
-        public string image_url { get; set; }
+        public string? PhoneNumber { get; set; }
+        public string? Rating { get; set; }
+        public string? ImageUrl { get; set; }
     }
 }

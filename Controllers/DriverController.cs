@@ -1,17 +1,17 @@
-using LyftAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LyftAPI.Controllers
 {
     [ApiController]
-    public class CostController
+    public class DriverController
     {
         [HttpGet]
-        [Route("/cost")]
+        [Route("/drivers")]
         [Produces("application/json")]
-        public Task<IActionResult> GetCost([FromQuery] string rideId, [FromQuery] Location startLocation, [FromQuery] Location endLocation)
+        public Task<IActionResult> GetDrivers([FromQuery] double latitude, [FromQuery] double longitude)
         {
             throw new NotImplementedException();
         }
+
     }
 }

@@ -1,18 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
-namespace LyftAPI.Model
+namespace LyftAPI.Models
 {
     public class PickUpDropoffLocation
     {
         [Required]
-        //The latitude component of a location
-        public double lat { get; set; }
+        public double Latitude { get; set; }
         [Required]
-        //The longitude component of a location
-        public double lng { get; set; }
-        //A human readable address at/near the given location
-        public string address { get; set; }
-        //Server time when the location object is created
-        public string? time { get; set; }
+        public double Longitude { get; set; }
+        public string? Address { get; set; }
+        public string? Time { get; set; }
     }
 }

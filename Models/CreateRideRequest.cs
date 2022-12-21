@@ -1,15 +1,12 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace LyftAPI.Models
 {
-    public class Ride
+    public class CreateRideRequest
     {
-        [Required]
-        public int RideId { get; set; }
+        public string? CostToken { get; set; }
+        public RideTypes RideType { get; set; }
         public Location? Origin { get; set; }
         public Location? Destination { get; set; }
-        public string? PrimeTimeConfirmationToken { get; set; }
-        public RideTypes RideType { get; set; }
+        public PassengerDetail? Passenger { get; set; }
         public enum RideTypes
         {
             Lyft,

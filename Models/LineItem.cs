@@ -1,17 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
-namespace LyftAPI.Model
+namespace LyftAPI.Models
 {
     public class LineItem
     {
         [Required]
-        //The line item display name for a charge item
-        public string type { get ; set;}
+        public string? Type { get ; set; }
         [Required]
-        //The line item amount
-        public int amount { get; set; }
+        public int Amount { get; set; }
         [Required]
-        //The currency for the amount
-        public string currency { get; set; }
+        public string? Currency { get; set; }
     }
 }

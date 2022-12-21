@@ -1,17 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
-namespace LyftAPI.Model
+namespace LyftAPI.Models
 {
     public class PassengerDetail
     {
         [Required]
-        //The passenger's first name
-        public string first_name { get; set; }
+        public string? FirstName { get; set; }
         [Required]
-        //The passenger's profile image
-        public string image_url { get; set; }
+        public string? ImageUrl { get; set; }
         [Required]
-        //The passenger's rating
-        public string rating { get; set; }
+        public string? Rating { get; set; }
     }
 }

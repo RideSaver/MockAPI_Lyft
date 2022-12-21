@@ -1,32 +1,34 @@
-﻿namespace LyftAPI.Model
+namespace LyftAPI.Models
 {
     public class RideDetail
     {
-        //The unique ID of this ride
-        public string ride_id { get; set; }
-        public RideStatusEnum status { get; set; }
-        public RideTypeEnumWithOther ride_type { get; set; }
-        public PassengerDetail passenger { get; set; }
-        public DriverDetail driver { get; set; }
-        public VehicleDetail vehicle { get; set; }
-        public RideLocation origin  { get; set; }
-        public RideLocation destination { get; set; }
-        public PickUpDropoffLocation pickup { get; set; }
-        public PickUpDropoffLocation dropoff { get; set; }
-        public RideLocation location { get; set; }
-        public string primetime_percentage { get; set; }
-        public Cost price { get; set; }
-        public LineItem line_items { get; set; }
-        public Enum can_cancel { get; set; }
-        public string canceled_by { get; set; }
-        public CancellationCost cancellation_price { get; set; }
-        //The rating the user left for this ride, from 1 to 5
-        public int rating { get; set; }
-        //The written feedback the user left for this ride
-        public string feedback { get; set; }
-        //The web view showing the passenger, driver, and route for this ride.
-        public string route_url { get; set; }
-        //The ride requested timestamp in date and time
-        public string requested_at { get; set; }
+        public int RideId { get; set; }
+        public RideStatusEnum? Status { get; set; }
+        public PassengerDetail? Passenger { get; set; }
+        public DriverDetail? Driver { get; set; }
+        public VehicleDetail? Vehicle { get; set; }
+        public RideLocation? Origin  { get; set; }
+        public RideLocation? Destination { get; set; }
+        public PickUpDropoffLocation? PickUp { get; set; }
+        public PickUpDropoffLocation? DropOff { get; set; }
+        public RideLocation? RideLocation { get; set; }
+        public string? PrimeTimePercentage { get; set; }
+        public Cost? Price { get; set; }
+        public LineItem? LineItem { get; set; }
+        public Enum? CanCancel { get; set; }
+        public string? CanceledBy { get; set; }
+        public CancellationCost? CancellationCost { get; set; }
+        public int Rating { get; set; }
+        public string? FeedBack { get; set; }
+        public string? RouteUrl { get; set; }
+        public string? RequestedAt { get; set; }
+        public RideTypes RideType { get; set; }
+        public enum RideTypes
+        {
+            Lyft,
+            LyftLine,
+            LyftPlus,
+            LyftSuv
+        }
     }
 }

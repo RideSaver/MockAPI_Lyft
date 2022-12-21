@@ -1,14 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
-namespace LyftAPI.Model
+namespace LyftAPI.Models
 {
     public class RatingRequest
     {
         [Required]
-        //The passenger's rating of this ride from 1 to 5
-        public int rating { get; set; }
-        //The passenger's written feedback about this ride
-        public string feedback { get; set; }
-        public TipParams tip { get; set; }
+        public int Rating { get; set; }
+        public string? FeedBack { get; set; }
+        public TipParams? Tip { get; set; }
     }
 }

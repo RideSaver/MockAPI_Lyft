@@ -1,14 +1,29 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using LyftAPI.Interface;
+using LyftAPI.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LyftAPI.Controllers
 {
-    public class ETAController
+    [ApiController]
+    public class EtaController
     {
-        public Task<IActionResult> GetETA([FromQuery] double lat, [FromQuery] double lng, [FromQuery] double destination_lat, [FromQuery] double destination_lng, [FromQuery] string ride_id)
+        private readonly IEstimateRepository _estimateRepository;
+
+        public EtaController(IEstimateRepository estimateRepository)
         {
-            {
-                throw new NotImplementedException();
-            }
+            _estimateRepository = estimateRepository;
+        }
+
+        [HttpGet]
+        [Route("/eta")]
+        [Produces("application/json")]
+        public async Task<IActionResult> GetETA([FromQuery]Location startLocation,[FromQuery]Location endLocation,[FromQuery] string rideType)
+        {
+            var rideEstimates = _estimateRepository.GetEstimates();
+
+            await Task.Delay(100);
+
+            return new OkObjectResult(rideEstimates);
         }
     }
 }

@@ -2,7 +2,7 @@ using LyftAPI.Interface;
 
 namespace LyftAPI.Repository
 {
-    public class CostRepository : ICostRepository
+    public class DriverRepository : IDriverRepository
     {
 
     }

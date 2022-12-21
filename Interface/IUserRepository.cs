@@ -1,6 +1,7 @@
-﻿namespace LyftAPI.Interface
+namespace LyftAPI.Interface
 {
-    public class IUserRepository
+    public interface IUserRepository
     {
+
     }
 }

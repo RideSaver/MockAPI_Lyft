@@ -1,16 +1,26 @@
 {
   "version": 2,
-  "dgSpecHash": "5kIBKSR57C6w5j64q2z9/FGXbPr59PmOyHjtIs658MRxmuDpTCnYXKcJH1WCZysEed7jCkOBO4R6asQ90SdLeA==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\Cindy\\source\\repos\\MockAPI_Lyft\\LyftAPI.csproj",
+  "dgSpecHash": "CnLlymvirq4TrGSZYVQ0W98T6zMyKIqBcMLkIdTXMVll3MBUaACmSz7DPG5g0BZK2I2FyhapMim3weGV95Fe1Q==",
+  "success": false,
+  "projectFilePath": "C:\\Users\\JohnI\\Desktop\\RideSaver\\MockAPI_Lyft\\LyftAPI.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Cindy\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
-    "C:\\Users\\Cindy\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
-    "C:\\Users\\Cindy\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.0\\microsoft.visualstudio.azure.containers.tools.targets.1.17.0.nupkg.sha512",
-    "C:\\Users\\Cindy\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
-    "C:\\Users\\Cindy\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
-    "C:\\Users\\Cindy\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
-    "C:\\Users\\Cindy\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+    "C:\\Users\\JohnI\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\JohnI\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\JohnI\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.0\\microsoft.visualstudio.azure.containers.tools.targets.1.17.0.nupkg.sha512",
+    "C:\\Users\\JohnI\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\JohnI\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\JohnI\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\JohnI\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "Unable to find project 'C:\\Users\\JohnI\\Desktop\\RideSaver\\MockAPI_Lyft\\build\\csharp-netcore\\src\\Lyft.Mock\\Lyft.Mock.csproj'. Check that the project reference is valid and that the project file exists.",
+      "libraryId": "C:\\Users\\JohnI\\Desktop\\RideSaver\\MockAPI_Lyft\\build\\csharp-netcore\\src\\Lyft.Mock\\Lyft.Mock.csproj",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

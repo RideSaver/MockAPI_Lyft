@@ -1,10 +1,8 @@
-﻿namespace LyftAPI.Model
+namespace LyftAPI.Models
 {
     public class NearbyDriversByRideType
     {
-        //driver's ride type. if driver is eligable for several ride types, he will be duplicated.
-        public string ride_type { get; set; }
-        //list of nearby drivers group by ride type sorted by eta
-        public NearbyDriver drivers { get; set; }
+        public string? RideType { get; set; }
+        public NearbyDriver? Drivers { get; set; }
     }
 }

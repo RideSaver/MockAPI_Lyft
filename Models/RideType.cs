@@ -1,17 +1,20 @@
-﻿namespace LyftAPI.Model
+namespace LyftAPI.Models
 {
     public class RideType
     {
-        
-        public RideTypeEnum? ride_type { get; set; }
-        //A human readable description of the ride type
-        public string display_name { get; set; }
-        //The maximum number of seats available for rides requested with this ride type
-        public int seats { get; set; }
-        //The URL of an image representing this ride type
-        public string image_url { get; set; }
-        public PricingDetails? price_details { get; set; }
-        public PricingDetails? scheduled_pricing_details { get; set; }
+        public string? DisplayName { get; set; }
+        public int Seats { get; set; }
+        public string? ImageUrl { get; set; }
+        public PricingDetails? PriceDetails { get; set; }
+        public PricingDetails? ScheduledPricingDetails { get; set; }
+        public RideTypes Ride_Type { get; set; }
+        public enum RideTypes
+        {
+            Lyft,
+            LyftLine,
+            LyftPlus,
+            LyftSuv
+        }
 
     }
 }

@@ -1,13 +1,12 @@
-﻿namespace LyftAPI.Model
+namespace LyftAPI.Models
 {
     public class RideRequest
     {
-        //The ID of the requested ride
-        public string ride_id { get; set; }
-        public RideStatusEnum status { get; set; }
-        public Location origin { get; set; }
-        public Location destination { get; set; }
-        public PassengerDetail passenger { get; set; }
+        public string? RideId { get; set; }
+        public RideStatusEnum? Status { get; set; }
+        public Location? Origin { get; set; }
+        public Location? Destination { get; set; }
+        public PassengerDetail? Passenger { get; set; }
 
     }
 }

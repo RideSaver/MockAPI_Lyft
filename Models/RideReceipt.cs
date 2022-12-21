@@ -1,15 +1,11 @@
-﻿namespace LyftAPI.Model
+namespace LyftAPI.Models
 {
     public class RideReceipt
     {
-        //The unique ID of this ride
-        public string ride_id { get; set; }
-        public Cost price { get; set; }
-        //The break down of line items
-        public LineItem line_items { get; set; }
-        //he break down of charge method
-        public Charge charges { get; set; }
-        //The ride requested timestamp in date and time
-        public string requested_at { get; set; }
+        public string? RideId { get; set; }
+        public Cost? Price { get; set; }
+        public LineItem? LineItem { get; set; }
+        public Charge? Charges { get; set; }
+        public string? RequestedAt { get; set; }
     }
 }

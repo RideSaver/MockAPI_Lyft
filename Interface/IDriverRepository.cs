@@ -1,6 +1,6 @@
 namespace LyftAPI.Interface
 {
-    public interface ICostRepository
+    public interface IDriverRepository
     {
     }
 }

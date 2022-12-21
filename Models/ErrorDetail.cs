@@ -1,8 +1,7 @@
-﻿namespace LyftAPI.Model
+namespace LyftAPI.Models 
 {
     public class ErrorDetail
     {
-        //description of the error
-        public string field_name { get; set; }
+        public string? ErrorDescription { get; set; }
     }
 }

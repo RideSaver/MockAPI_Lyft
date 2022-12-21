@@ -1,36 +1,43 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Cindy\\source\\repos\\MockAPI_Lyft\\LyftAPI.csproj": {}
+    "C:\\Users\\JohnI\\Desktop\\RideSaver\\MockAPI_Lyft\\LyftAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Cindy\\source\\repos\\MockAPI_Lyft\\LyftAPI.csproj": {
+    "C:\\Users\\JohnI\\Desktop\\RideSaver\\MockAPI_Lyft\\LyftAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Cindy\\source\\repos\\MockAPI_Lyft\\LyftAPI.csproj",
+        "projectUniqueName": "C:\\Users\\JohnI\\Desktop\\RideSaver\\MockAPI_Lyft\\LyftAPI.csproj",
         "projectName": "LyftAPI",
-        "projectPath": "C:\\Users\\Cindy\\source\\repos\\MockAPI_Lyft\\LyftAPI.csproj",
-        "packagesPath": "C:\\Users\\Cindy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Cindy\\source\\repos\\MockAPI_Lyft\\obj\\",
+        "projectPath": "C:\\Users\\JohnI\\Desktop\\RideSaver\\MockAPI_Lyft\\LyftAPI.csproj",
+        "packagesPath": "C:\\Users\\JohnI\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\JohnI\\Desktop\\RideSaver\\MockAPI_Lyft\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Cindy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\JohnI\\Desktop\\RideSaver\\NuGet.Config",
+          "C:\\Users\\JohnI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://nuget.pkg.github.com/RideSaver/index.json": {},
+          "https://www.nuget.org/api/v2/": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\JohnI\\Desktop\\RideSaver\\MockAPI_Lyft\\build\\csharp-netcore\\src\\Lyft.Mock\\Lyft.Mock.csproj": {
+                "projectPath": "C:\\Users\\JohnI\\Desktop\\RideSaver\\MockAPI_Lyft\\build\\csharp-netcore\\src\\Lyft.Mock\\Lyft.Mock.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -71,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,11 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
-namespace LyftAPI.Model
+namespace LyftAPI.Models
 {
     public class Profile
     {
-        //The unique ID of this user
         [Required]
-        public string id { get; set; }
+        public string? Id { get; set; }
     }
 }

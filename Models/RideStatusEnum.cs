@@ -1,7 +1,16 @@
-﻿namespace LyftAPI.Model
+namespace LyftAPI.Models
 {
     public class RideStatusEnum
-    {   //The current status of the ride
-        string[] Enum = { "pending", "accepted", "arrived", "pickedUp", "droppedOff", "canceled", "unknown" }; 
+    {
+        public enum RideStatus
+        {
+            Pending,
+            Accepted,
+            Arrived,
+            PickedUp,
+            DroppedOff,
+            Cancelled,
+            Unknown
+        }
     }
 }

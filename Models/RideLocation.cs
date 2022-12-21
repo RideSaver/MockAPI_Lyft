@@ -1,18 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
-namespace LyftAPI.Model
+namespace LyftAPI.Models
 {
     public class RideLocation
     {
         [Required]
-        //The latitude component of a location
-        public double lat { get; set; }
+        public double Lat { get; set; }
         [Required]
-        //The longitude component of a location
-        public double lng { get; set; }
-        //A human readable address at/near the given location
-        public string address { get; set; }
-        //Estimated seconds for a driver to pickup or reach destination based on ride state
-        public int eta_seconds { get; set; }
+        public double Long { get; set; }
+        public string? Address { get; set; }
+        public int EstimateSeconds { get; set; }
     }
 }
