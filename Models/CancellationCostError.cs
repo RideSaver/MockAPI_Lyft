@@ -14,7 +14,6 @@ namespace LyftAPI.Models
         public int TokenDuration { get; set; }
         public string? Error { get; set; }
         public ErrorDetail? ErrorDetail { get; set; }
-
         public string? ErrorDescription { get; set; }
 
     }
