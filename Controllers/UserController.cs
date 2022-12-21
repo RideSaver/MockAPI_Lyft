@@ -26,6 +26,7 @@ namespace LyftAPI.Controllers
         public IActionResult GetUserRide([FromRoute][Required] string id)
         {
             var ride = _userRepository.GetUserRide(id);
+
             return new OkObjectResult(ride);
         }
 
@@ -34,6 +35,7 @@ namespace LyftAPI.Controllers
         public IActionResult GetUserRides([FromQuery][Required()] DateTime? startTime, [FromQuery] DateTime? endTime, [FromQuery][Range(0, 50)] int? limit)
         {
             var userRides = _userRepository.GetUserRides();
+
             return new OkObjectResult(userRides);
         }
 
@@ -42,6 +44,7 @@ namespace LyftAPI.Controllers
         public IActionResult PostUserRides([FromBody] CreateRideRequest body)
         {
             var userRide = _userRepository.PostUserRide(body);
+
             return new OkObjectResult(userRide);
         }
     }

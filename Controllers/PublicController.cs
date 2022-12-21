@@ -20,6 +20,7 @@ namespace LyftAPI.Controllers
         {
             var startLocation = new LatLng() {  Lat = startLat, Lng = startLng };
             var endLocation  = new LatLng() { Lat = endLat, Lng = endLng };
+
             return new OkObjectResult(_publicRepository.GetCostEstimates(startLocation, endLocation, rideType));
         }
 
@@ -28,6 +29,7 @@ namespace LyftAPI.Controllers
         public IActionResult GetRideEstimate([FromQuery][Required()] double? lat, [FromQuery][Required()] double? lng, [FromQuery] string rideType)
         {
             var location = new LatLng() { Lat = lat, Lng = lng };
+
             return new OkObjectResult(_publicRepository.GetRideEstimates(location, rideType));
         }
 
@@ -36,9 +38,8 @@ namespace LyftAPI.Controllers
         public IActionResult GetRideTypes([FromQuery][Required()] double? lat, [FromQuery][Required()] double? lng, [FromQuery] string rideType)
         {
             var location = new LatLng() { Lat = lat, Lng = lng };
+
             return new OkObjectResult(_publicRepository.GetRideTypes(location, rideType));
         }
-
     }
-
 }

@@ -10,9 +10,7 @@ namespace LyftAPI.Repository
         public CostEstimateResponse GetCostEstimates(LatLng start, LatLng end, string rideType)
         {
             var costEstimateResponse = new CostEstimateResponse();
-
-            var rideDetailList = AutoFaker.Generate<CostEstimate>(10);
-            costEstimateResponse.CostEstimates = rideDetailList;
+            costEstimateResponse.CostEstimates = AutoFaker.Generate<CostEstimate>(10);
 
             return costEstimateResponse;
         }
@@ -20,9 +18,7 @@ namespace LyftAPI.Repository
         public EtaEstimateResponse GetRideEstimates(LatLng location, string rideType)
         {
             var etaEstimateResponse = new EtaEstimateResponse();
-
-            var etaList = AutoFaker.Generate<Eta>(10);
-            etaEstimateResponse.EtaEstimates = etaList;
+            etaEstimateResponse.EtaEstimates = AutoFaker.Generate<Eta>(10);
 
             return etaEstimateResponse;
         }
@@ -30,9 +26,7 @@ namespace LyftAPI.Repository
         public RideTypesResponse GetRideTypes(LatLng location, string rideType)
         {
             var rideTypesResponse = new RideTypesResponse();
-
-            var rideTypeList = AutoFaker.Generate<RideType>(10);
-            rideTypesResponse.RideTypes = rideTypeList;
+            rideTypesResponse.RideTypes = AutoFaker.Generate<RideType>(10);
 
             return rideTypesResponse;
         }
