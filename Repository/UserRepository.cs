@@ -2,6 +2,7 @@ using AutoBogus;
 using Bogus;
 using LyftAPI.Interface;
 using LyftAPI.Models;
+using LyftAPI.Registry;
 
 namespace LyftAPI.Repository
 {
@@ -10,7 +11,7 @@ namespace LyftAPI.Repository
         public RideDetail GetUserRide(string id)
         {
             var rideDetailResponse = new RideDetail();
-            rideDetailResponse = AutoFaker.Generate<RideDetail>();
+            rideDetailResponse = RideDetailGenerator.GenerateRideDetail(2)!.First();
 
             return rideDetailResponse;
         }
@@ -18,7 +19,7 @@ namespace LyftAPI.Repository
         public InlineResponse200 GetUserRides()
         {
             var inlineResponse = new InlineResponse200();
-            inlineResponse.RideHistory = AutoFaker.Generate<RideDetail>(10);
+            inlineResponse.RideHistory = RideDetailGenerator.GenerateRideDetail(10)!;
 
             return inlineResponse;
         }
@@ -26,7 +27,7 @@ namespace LyftAPI.Repository
         public Ride PostUserRide(CreateRideRequest rideRequest)
         {
             var rideResponse = new Ride();
-            rideResponse = AutoFaker.Generate<Ride>();
+            rideResponse = RideGenerator.GenerateRides(1)!.First();
 
             return rideResponse;
         }

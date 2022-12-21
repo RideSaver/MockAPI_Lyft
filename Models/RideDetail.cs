@@ -11,10 +11,10 @@ namespace LyftAPI.Models
         public string RideId { get; set; }
 
         [DataMember(Name="status")]
-        public RideStatusEnum Status { get; set; }
+        public RideStatusEnum? Status { get; set; }
 
-        [DataMember(Name="ride_type")]
-        public RideTypeEnumWithOther RideType { get; set; }
+        /*[DataMember(Name="ride_type")]
+        public RideTypeEnumWithOther? RideType { get; set; }*/
 
         [DataMember(Name="passenger")]
         public PassengerDetail Passenger { get; set; }
@@ -85,7 +85,7 @@ namespace LyftAPI.Models
             sb.Append("class RideDetail {\n");
             sb.Append("  RideId: ").Append(RideId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  RideType: ").Append(RideType).Append("\n");
+            //sb.Append("  RideType: ").Append(RideType).Append("\n");
             sb.Append("  Passenger: ").Append(Passenger).Append("\n");
             sb.Append("  Driver: ").Append(Driver).Append("\n");
             sb.Append("  Vehicle: ").Append(Vehicle).Append("\n");
@@ -133,11 +133,11 @@ namespace LyftAPI.Models
                     Status != null &&
                     Status.Equals(other.Status)
                 ) && 
-                (
+                /*(
                     RideType == other.RideType ||
                     RideType != null &&
                     RideType.Equals(other.RideType)
-                ) && 
+                ) && */
                 (
                     Passenger == other.Passenger ||
                     Passenger != null &&
@@ -239,8 +239,8 @@ namespace LyftAPI.Models
                     hashCode = hashCode * 59 + RideId.GetHashCode();
                     if (Status != null)
                     hashCode = hashCode * 59 + Status.GetHashCode();
-                    if (RideType != null)
-                    hashCode = hashCode * 59 + RideType.GetHashCode();
+                    /*if (RideType != null)
+                    hashCode = hashCode * 59 + RideType.GetHashCode();*/
                     if (Passenger != null)
                     hashCode = hashCode * 59 + Passenger.GetHashCode();
                     if (Driver != null)

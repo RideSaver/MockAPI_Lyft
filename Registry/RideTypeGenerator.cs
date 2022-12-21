@@ -1,4 +1,5 @@
 using AutoBogus;
+using Bogus;
 using LyftAPI.Helper;
 using LyftAPI.Models;
 
@@ -6,54 +7,21 @@ namespace LyftAPI.Registry
 {
     public class RideTypeGenerator
     {
-        public static readonly IEnumerable<string> NamePool = new List<string>() // Display Name Pool
-        {
-            "John",
-            "Luke",
-            "Elias",
-            "Rick",
-            "Luis",
-            "Richard",
-            "Aaron",
-            "Robert",
-            "Ben",
-            "Micheal",
-            "Mark",
-            "Nathan",
-            "Kimberly",
-            "Cecilia",
-            "Eydie",
-            "Jordan",
-            "Emily",
-            "Kylie",
-            "Tania",
-            "Dylan",
-            "Aina",
-            "Morgan",
-            "Olivia",
-            "Reena",
-            "Jeremy",
-            "Oliver",
-            "Reda",
-            "Neven",
-            "Matthew",
-            "Ryan",
-            "Amith",
-            "Luke",
-            "Zahira",
-            "Juan",
-            "Ahmed",
-            "Carlos",
-            "Ming",
-            "Allen",
-            "Anthony"
-        };
-
-        public static int seatsPool = 4;
         public static string ImagePool = "";
+
+        public static Faker<PricingDetails> PD_FAKER_CONFIG = new AutoFaker<PricingDetails>()
+                .RuleFor(o => o.BaseCharge, fake => fake.Random.Int(1, 5))
+                .RuleFor(o => o.CancelPenaltyAmount, () => 5)
+                .RuleFor(o => o.CostMinimum, () => 3)
+                .RuleFor(o => o.CostMinimum, fake => fake.Random.Int(1, 4))
+                .RuleFor(o => o.CostPerMile, fake => fake.Random.Int(1, 3))
+                .RuleFor(o => o.CostPerMinute, fake => fake.Random.Int(1, 4))
+                .RuleFor(o => o.Currency, () => "USD")
+                .RuleFor(o => o.TrustAndService, () => 3);
 
         public static List<RideType>? GenerateRideTypes(int repeat)
         {
+            
             var rideTypes = new List<RideType>();
             if (repeat <= 0) return null;
 
@@ -65,18 +33,17 @@ namespace LyftAPI.Registry
                 var rideType = new RideType()
                 {
                     _RideType = (Models.RideTypeEnum)rideTypeValues.GetValue(random.Next(rideTypeValues.Length))!,
-                    DisplayName = NamePool.Random(),
-                    Seats = seatsPool,
+                    DisplayName = DataPool.NamePool.Random(),
+                    Seats = 4,
                     ImageUrl = ImagePool,
-                    PricingDetails = AutoFaker.Generate<PricingDetails>(),
-                    ScheduledPricingDetails = AutoFaker.Generate<PricingDetails>()
+                    PricingDetails = PD_FAKER_CONFIG.Generate(),
+                    ScheduledPricingDetails = PD_FAKER_CONFIG.Generate()
                 };
 
                 rideTypes.Add(rideType);
             }
 
             return rideTypes;
-
         }
     }
 }

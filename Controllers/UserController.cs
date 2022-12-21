@@ -23,29 +23,23 @@ namespace LyftAPI.Controllers
 
         [HttpGet]
         [Route("/rides/{id}")]
-        public IActionResult GetUserRide([FromRoute][Required] string id)
+        public IActionResult GetUserRide([FromRoute] string id)
         {
-            var ride = _userRepository.GetUserRide(id);
-
-            return new OkObjectResult(ride);
+            return new OkObjectResult(_userRepository.GetUserRide(id));
         }
 
         [HttpGet]
         [Route("/rides")]
         public IActionResult GetUserRides([FromQuery][Required()] DateTime? startTime, [FromQuery] DateTime? endTime, [FromQuery][Range(0, 50)] int? limit)
         {
-            var userRides = _userRepository.GetUserRides();
-
-            return new OkObjectResult(userRides);
+            return new OkObjectResult(_userRepository.GetUserRides());
         }
 
         [HttpPost]
         [Route("/rides")]
         public IActionResult PostUserRides([FromBody] CreateRideRequest body)
         {
-            var userRide = _userRepository.PostUserRide(body);
-
-            return new OkObjectResult(userRide);
+            return new OkObjectResult(_userRepository.PostUserRide(body));
         }
     }
 }
