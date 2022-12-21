@@ -1,16 +1,24 @@
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace LyftAPI.Models
-{
-    public class RideStatusEnum
-    {
-        public enum RideStatus
+{ 
+        [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public enum RideStatusEnum
         {
-            Pending,
-            Accepted,
-            Arrived,
-            PickedUp,
-            DroppedOff,
-            Cancelled,
-            Unknown
+            [EnumMember(Value = "pending")]
+            PendingEnum = 0,
+            [EnumMember(Value = "accepted")]
+            AcceptedEnum = 1,
+            [EnumMember(Value = "arrived")]
+            ArrivedEnum = 2,
+            [EnumMember(Value = "pickedUp")]
+            PickedUpEnum = 3,
+            [EnumMember(Value = "droppedOff")]
+            DroppedOffEnum = 4,
+            [EnumMember(Value = "canceled")]
+            CanceledEnum = 5,
+            [EnumMember(Value = "unknown")]
+            UnknownEnum = 6
         }
-    }
 }

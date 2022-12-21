@@ -1,9 +1,0 @@
-using LyftAPI.Interface;
-
-namespace LyftAPI.Repository
-{
-    public class DriverRepository : IDriverRepository
-    {
-
-    }
-}

@@ -1,80 +1,48 @@
-using Microsoft.AspNetCore.Mvc;
 using LyftAPI.Interface;
-
+using LyftAPI.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace LyftAPI.Controllers
 {
+    [Route("[controller]")]
     [ApiController]
-    public class UserController
+    public class UserController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
         public UserController(IUserRepository userRepository) => _userRepository = userRepository;
 
-        [HttpGet]
-        [Route("/lyft/api/user/profile")]
-        [Produces("application/json")]
-        public Task<IActionResult> GetProfile([FromQuery] string profile)
+        [HttpPost]
+        [Route("/rides/{id}/cancel")]
+        public IActionResult CancelUserRide([FromRoute][Required] string id, [FromBody] CancellationRequest body)
         {
-            throw new NotImplementedException();
+            return new NoContentResult(); // Validation
         }
 
         [HttpGet]
-        [Route("/lyft/api/user/rides")]
-        [Produces("application/json")]
-        public Task<IActionResult> GetRides([FromQuery] int limit)
+        [Route("/rides/{id}")]
+        public IActionResult GetUserRide([FromRoute][Required] string id)
         {
-            throw new NotImplementedException();
+            var ride = _userRepository.GetUserRide(id);
+            return new OkObjectResult(ride);
+        }
+
+        [HttpGet]
+        [Route("/rides")]
+        public IActionResult GetUserRides([FromQuery][Required()] DateTime? startTime, [FromQuery] DateTime? endTime, [FromQuery][Range(0, 50)] int? limit)
+        {
+            var userRides = _userRepository.GetUserRides();
+            return new OkObjectResult(userRides);
         }
 
         [HttpPost]
-        [Route("/lyft/api/user/rides")]
-        [Produces("application/json")]
-        public Task<IActionResult> NewRide([FromQuery] string? ride_info)
+        [Route("/rides")]
+        public IActionResult PostUserRides([FromBody] CreateRideRequest body)
         {
-            throw new NotImplementedException();
-        }
-
-        [HttpGet]
-        [Route("/lyft/api/user/rides/{id}")]
-        [Produces("application/json")]
-        public Task<IActionResult> GetRide([FromQuery] string ride_id)
-        {
-            throw new NotImplementedException();
-        }
-
-        [HttpPost]
-        [Route("/lyft/api/user/rides/{id}/cancel")]
-        [Produces("application/json")]
-        public Task<IActionResult> CancelRide([FromQuery] string? cancel_ride)
-        {
-            throw new NotImplementedException();
-        }
-
-        [HttpGet]
-        [Route("/lyft/api/user/rides/{id}/receipt")]
-        [Produces("application/json")]
-        public Task<IActionResult> SetRideDestination([FromQuery] string coordinates,
-            [FromQuery] string optional_address)
-        {
-            throw new NotImplementedException();
-        }
-
-        [HttpPut]
-        [Route("/lyft/api/user/rides/{id}/rating")]
-        [Produces("application/json")]
-        public Task<IActionResult> SetRideRating([FromQuery] string feedback)
-        {
-            throw new NotImplementedException();
-        }
-
-        [HttpPut]
-        [Route("/lyft/api/user/rides/{id}/destination")]
-        [Produces("application/json")]
-        public Task<IActionResult> GetRideReceipt([FromQuery] string id)
-        {
-            throw new NotImplementedException();
+            var userRide = _userRepository.PostUserRide(body);
+            return new OkObjectResult(userRide);
         }
     }
 }
-
-
