@@ -58,7 +58,6 @@ namespace LyftAPI.Registry
                 {
                     RideId = "0000-0000-0000-0000",
                     Status = (Models.RideStatusEnum)rideStatusValues.GetValue(random.Next(rideStatusValues.Length))!,
-                    //RideType = (Models.RideTypeEnumWithOther)rideStatusOtherValues.GetValue(random.Next(rideStatusOtherValues.Length))!,
                     Passenger = PD_FAKER_CONFIG.Generate(),
                     Driver = DD_FAKER_CONFIG.Generate(),
                     Vehicle = V_Faker_CONFIG.Generate(),
