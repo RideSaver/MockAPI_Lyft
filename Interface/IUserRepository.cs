@@ -1,6 +1,12 @@
-﻿namespace LyftAPI.Interface
+using LyftAPI.Models;
+
+namespace LyftAPI.Interface
 {
-    public class IUserRepository
+    public interface IUserRepository
     {
+        RideDetail GetUserRide(string id);
+        InlineResponse200 GetUserRides();
+        Ride PostUserRide(CreateRideRequest rideRequest);
+        
     }
 }

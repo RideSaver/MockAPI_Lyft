@@ -1,31 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Cindy\\source\\repos\\MockAPI_Lyft\\LyftAPI.csproj": {}
+    "C:\\Users\\JohnI\\Desktop\\RideSaver\\MockAPI_Lyft\\LyftAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Cindy\\source\\repos\\MockAPI_Lyft\\LyftAPI.csproj": {
+    "C:\\Users\\JohnI\\Desktop\\RideSaver\\MockAPI_Lyft\\LyftAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Cindy\\source\\repos\\MockAPI_Lyft\\LyftAPI.csproj",
+        "projectUniqueName": "C:\\Users\\JohnI\\Desktop\\RideSaver\\MockAPI_Lyft\\LyftAPI.csproj",
         "projectName": "LyftAPI",
-        "projectPath": "C:\\Users\\Cindy\\source\\repos\\MockAPI_Lyft\\LyftAPI.csproj",
-        "packagesPath": "C:\\Users\\Cindy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Cindy\\source\\repos\\MockAPI_Lyft\\obj\\",
+        "projectPath": "C:\\Users\\JohnI\\Desktop\\RideSaver\\MockAPI_Lyft\\LyftAPI.csproj",
+        "packagesPath": "C:\\Users\\JohnI\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\JohnI\\Desktop\\RideSaver\\MockAPI_Lyft\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Cindy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\JohnI\\Desktop\\RideSaver\\MockAPI_Lyft\\NuGet.Config",
+          "C:\\Users\\JohnI\\Desktop\\RideSaver\\NuGet.Config",
+          "C:\\Users\\JohnI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://nuget.pkg.github.com/RideSaver/index.json": {},
+          "https://www.nuget.org/api/v2/": {}
         },
         "frameworks": {
           "net6.0": {
@@ -43,13 +47,37 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoBogus": {
+              "target": "Package",
+              "version": "[2.13.1, )"
+            },
+            "Bogus": {
+              "target": "Package",
+              "version": "[34.0.2, )"
+            },
+            "Docker.DotNet": {
+              "target": "Package",
+              "version": "[3.125.12, )"
+            },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.17.0, )"
             },
-            "Swashbuckle.AspNetCore": {
+            "Newtonsoft.Json": {
               "target": "Package",
-              "version": "[6.2.3, )"
+              "version": "[13.0.2, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerGen": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerUI": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            },
+            "TestEnvironment.Docker": {
+              "target": "Package",
+              "version": "[2.1.4, )"
             }
           },
           "imports": [
@@ -71,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
