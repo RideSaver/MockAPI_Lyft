@@ -11,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHealthChecks();
 
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IPublicRepository, PublicRepository>();
@@ -38,6 +39,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 
 app.UseHttpsRedirection();
 app.MapControllers();
+app.MapHealthChecks("/healthz");
 
 app.Logger.LogInformation("[MockAPI::Lyft] Finished middleware configuration.. starting the service.");
 
