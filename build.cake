@@ -31,7 +31,6 @@ Task("GenerateOpenAPI")
     {
         ConfigurationFile = "./openapi-codegen.json",
         PackageName = packageName,
-        TemplateDirectory = "./templates/csharp"
     });
 });
 
