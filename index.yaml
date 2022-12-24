@@ -1,2 +1,14 @@
 apiVersion: v1
-entries: {}
+entries:
+  RideSaver_Mock_Lyft:
+  - apiVersion: v2
+    appVersion: v0.0.2
+    created: "2022-12-24T07:14:30.046418871Z"
+    description: A Helm chart for Kubernetes
+    digest: 106743b8699e3aed0fd48c87d56f0653676ba4103f3fcca54c28ac22f70ff500
+    name: RideSaver_Mock_Lyft
+    type: application
+    urls:
+    - https://github.com/RideSaver/MockAPI_Lyft/releases/download/RideSaver_Mock_Lyft-0.1.0/RideSaver_Mock_Lyft-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-12-24T07:14:30.046427371Z"
