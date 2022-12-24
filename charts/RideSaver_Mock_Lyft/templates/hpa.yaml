@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "UberClient.fullname" . }}
+  name: {{ include "RideSaver_Mock_Lyft.fullname" . }}
   labels:
-    {{- include "UberClient.labels" . | nindent 4 }}
+    {{- include "RideSaver_Mock_Lyft.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "UberClient.fullname" . }}
+    name: {{ include "RideSaver_Mock_Lyft.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:
