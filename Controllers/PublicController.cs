@@ -22,14 +22,14 @@ namespace LyftAPI.Controllers
         [HttpGet]
         [Route("/cost")]
         [Produces("application/json")]
-        public async Task<ActionResult<CostEstimateResponse>> GetCostEstimates([FromQuery][Required()] double? startLat, [FromQuery][Required()] double? startLng, [FromQuery] string rideType, [FromQuery] double? endLat, [FromQuery] double? endLng)
+        public async Task<ActionResult<CostEstimateResponse>> GetCostEstimates([FromQuery][Required()] double? start_lat, [FromQuery][Required()] double? start_lng, [FromQuery] string ride_type, [FromQuery] double? end_lat, [FromQuery] double? end_lng)
         {
             _logger.LogInformation("[LyftAPI:PublicController:GetCostEstimates] Controller endpoint invoked..");
 
-            var startLocation = new LatLng() {  Lat = startLat, Lng = startLng };
-            var endLocation  = new LatLng() { Lat = endLat, Lng = endLng };
+            var startLocation = new LatLng() {  Lat = start_lat, Lng = start_lng };
+            var endLocation  = new LatLng() { Lat = end_lat, Lng = end_lng };
 
-            var estimate = await _publicRepository.GetCostEstimates(startLocation, endLocation, rideType);
+            var estimate = await _publicRepository.GetCostEstimates(startLocation, endLocation, ride_type);
 
             return Content(estimate.ToJson(), "application/json");
         }

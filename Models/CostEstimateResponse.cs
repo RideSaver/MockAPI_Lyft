@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace LyftAPI.Models
 { 
-    [DataContract]
+    [DataContract(Name = "CostEstimateResponse")]
     public class CostEstimateResponse : IEquatable<CostEstimateResponse>
     { 
         [DataMember(Name="cost_estimates")]
