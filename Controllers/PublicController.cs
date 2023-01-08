@@ -7,8 +7,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LyftAPI.Controllers
 {
-    [Route("[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class PublicController : ControllerBase
     {
         private readonly IPublicRepository _publicRepository;
@@ -22,7 +22,6 @@ namespace LyftAPI.Controllers
         [HttpGet]
         [Route("/cost")]
         [Produces("application/json")]
-        [Consumes("application/json")]
         public async Task<ActionResult<CostEstimateResponse>> GetCostEstimates([FromQuery][Required()] double? startLat, [FromQuery][Required()] double? startLng, [FromQuery] string rideType, [FromQuery] double? endLat, [FromQuery] double? endLng)
         {
             _logger.LogInformation("[LyftAPI:PublicController:GetCostEstimates] Controller endpoint invoked..");
@@ -38,7 +37,6 @@ namespace LyftAPI.Controllers
         [HttpGet]
         [Route("/eta")]
         [Produces("application/json")]
-        [Consumes("application/json")]
         public async Task<ActionResult<EtaEstimateResponse>> GetRideEstimate([FromQuery][Required()] double? lat, [FromQuery][Required()] double? lng, [FromQuery] string rideType)
         {
             _logger.LogInformation("[LyftAPI:PublicController:GetRideEstimate] Controller endpoint invoked..");
@@ -53,7 +51,6 @@ namespace LyftAPI.Controllers
         [HttpGet]
         [Route("/ridetypes")]
         [Produces("application/json")]
-        [Consumes("application/json")]
         public async Task<ActionResult<RideTypesResponse>> GetRideTypes([FromQuery][Required()] double? lat, [FromQuery][Required()] double? lng, [FromQuery] string rideType)
         {
             _logger.LogInformation("[LyftAPI:PublicController:GetRideTypes] Controller endpoint invoked..");
