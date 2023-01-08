@@ -22,10 +22,10 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IPublicRepository, PublicRepository>();
 
-builder.Services.Configure<ListenOptions>(options =>
+/*builder.Services.Configure<ListenOptions>(options =>
 {
     options.UseHttps(new X509Certificate2(Path.Combine("/certs/tls.crt"), Path.Combine("/certs/tls.key")));
-});
+});*/
 
 var app = builder.Build();
 
@@ -43,7 +43,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
     ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
 });
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.MapControllers();
 app.MapHealthChecks("/healthz");
