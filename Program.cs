@@ -13,6 +13,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks();
 
+
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.NumberHandling = System.Text.Json.Serialization.JsonNumberHandling.AllowReadingFromString;
+});
+
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IPublicRepository, PublicRepository>();
 
@@ -38,9 +44,11 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 });
 
 app.UseHttpsRedirection();
+
 app.MapControllers();
 app.MapHealthChecks("/healthz");
+app.UseRouting();
 
-app.Logger.LogInformation("[MockAPI::Lyft] Finished middleware configuration.. starting the service.");
+app.Logger.LogInformation("[MockAPI::Lyft] Finished middleware configuration.. starting the MockAPI.");
 
 app.Run();

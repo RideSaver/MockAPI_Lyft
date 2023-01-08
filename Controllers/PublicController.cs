@@ -12,34 +12,57 @@ namespace LyftAPI.Controllers
     public class PublicController : ControllerBase
     {
         private readonly IPublicRepository _publicRepository;
-        public PublicController(IPublicRepository publicRepository) => _publicRepository = publicRepository;
+        private readonly ILogger<PublicController> _logger;
+        public PublicController(IPublicRepository publicRepository, ILogger<PublicController> logger)
+        {
+            _publicRepository = publicRepository;
+            _logger = logger;
+        }
 
         [HttpGet]
         [Route("/cost")]
-        public IActionResult GetCostEstimates([FromQuery][Required()] double? startLat, [FromQuery][Required()] double? startLng, [FromQuery] string rideType, [FromQuery] double? endLat, [FromQuery] double? endLng)
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        public async Task<ActionResult<CostEstimateResponse>> GetCostEstimates([FromQuery][Required()] double? startLat, [FromQuery][Required()] double? startLng, [FromQuery] string rideType, [FromQuery] double? endLat, [FromQuery] double? endLng)
         {
+            _logger.LogInformation("[LyftAPI:PublicController:GetCostEstimates] Controller endpoint invoked..");
+
             var startLocation = new LatLng() {  Lat = startLat, Lng = startLng };
             var endLocation  = new LatLng() { Lat = endLat, Lng = endLng };
 
-            return new OkObjectResult(_publicRepository.GetCostEstimates(startLocation, endLocation, rideType));
+            var estimate = await _publicRepository.GetCostEstimates(startLocation, endLocation, rideType);
+
+            return Content(estimate.ToJson(), "application/json");
         }
 
         [HttpGet]
         [Route("/eta")]
-        public IActionResult GetRideEstimate([FromQuery][Required()] double? lat, [FromQuery][Required()] double? lng, [FromQuery] string rideType)
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        public async Task<ActionResult<EtaEstimateResponse>> GetRideEstimate([FromQuery][Required()] double? lat, [FromQuery][Required()] double? lng, [FromQuery] string rideType)
         {
+            _logger.LogInformation("[LyftAPI:PublicController:GetRideEstimate] Controller endpoint invoked..");
+
             var location = new LatLng() { Lat = lat, Lng = lng };
 
-            return new OkObjectResult(_publicRepository.GetRideEstimates(location, rideType));
+            var estimate = await _publicRepository.GetRideEstimates(location, rideType);
+
+            return Content(estimate.ToJson(), "application/json");
         }
 
         [HttpGet]
         [Route("/ridetypes")]
-        public IActionResult GetRideTypes([FromQuery][Required()] double? lat, [FromQuery][Required()] double? lng, [FromQuery] string rideType)
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        public async Task<ActionResult<RideTypesResponse>> GetRideTypes([FromQuery][Required()] double? lat, [FromQuery][Required()] double? lng, [FromQuery] string rideType)
         {
+            _logger.LogInformation("[LyftAPI:PublicController:GetRideTypes] Controller endpoint invoked..");
+
             var location = new LatLng() { Lat = lat, Lng = lng };
 
-            return new OkObjectResult(_publicRepository.GetRideTypes(location, rideType));
+            var ride = await _publicRepository.GetRideTypes(location, rideType);
+
+            return Content(ride.ToJson(), "application/json");
         }
     }
 }
