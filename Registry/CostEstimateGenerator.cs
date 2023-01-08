@@ -25,24 +25,21 @@ namespace LyftAPI.Registry
             var rideTypeValues = Enum.GetValues(typeof(RideTypeEnum));
             Random random = new Random();
 
-            for (int i = 0; i <= repeat; i++)
+            var costEstimate = new CostEstimate()
             {
-                var costEstimate = new CostEstimate()
-                {
-                    RideType = (Models.RideTypeEnum)rideTypeValues.GetValue(random.Next(rideTypeValues.Length))!,
-                    DisplayName = DataPool.NamePool.Random(),
-                    Currency = CurrencyPool,
-                    EstimatedCostCentsMin = EstimatedCostMinimumPool.Random(),
-                    EstimatedCostCentsMax = EstimatedCostMaximumPool.Random(),
-                    EstimatedDistanceMiles = (double)EstimatedDistnaceMilePool.Random(),
-                    EstimatedDurationSeconds = EstimatedDurationSecondsPool.Random(),
-                    IsValidEstimate = true,
-                    PrimetimePercentage = PrimeTimePercentage,
-                    PrimetimeConfirmationToken = PrimeTimeConfirmationToken
-                };
+                RideType = (Models.RideTypeEnum)rideTypeValues.GetValue(random.Next(rideTypeValues.Length))!,
+                DisplayName = DataPool.NamePool.Random(),
+                Currency = CurrencyPool,
+                EstimatedCostCentsMin = EstimatedCostMinimumPool.Random(),
+                EstimatedCostCentsMax = EstimatedCostMaximumPool.Random(),
+                EstimatedDistanceMiles = (double)EstimatedDistnaceMilePool.Random(),
+                EstimatedDurationSeconds = EstimatedDurationSecondsPool.Random(),
+                IsValidEstimate = true,
+                PrimetimePercentage = PrimeTimePercentage,
+                PrimetimeConfirmationToken = PrimeTimeConfirmationToken
+            };
 
-                costEstimates.Add(costEstimate);
-            }
+            costEstimates.Add(costEstimate);
 
             return costEstimates;
         }
