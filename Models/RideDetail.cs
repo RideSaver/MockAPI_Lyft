@@ -17,11 +17,11 @@ namespace LyftAPI.Models
     public class RideDetail : IEquatable<RideDetail>
     { 
         [DataMember(Name = "status")]
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public RideStatusEnum? Status { get; set; } = RideStatusEnum.PendingEnum;
 
         [DataMember(Name = "ride_type")]
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public RideTypeEnumWithOther? RideType { get; set; } = RideTypeEnumWithOther.LyftEnum;
 
         [DataMember(Name = "ride_id")]
@@ -61,7 +61,7 @@ namespace LyftAPI.Models
         public List<LineItem>? LineItems { get; set; }
 
         [DataMember(Name = "can_cancel")]
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public List<RideDetail.CanCancelEnum>? CanCancel { get; set; }
 
         [DataMember(Name = "canceled_by")]
@@ -149,11 +149,11 @@ namespace LyftAPI.Models
                     Status != null &&
                     Status.Equals(other.Status)
                 ) && 
-                /*(
+                (
                     RideType == other.RideType ||
                     RideType != null &&
                     RideType.Equals(other.RideType)
-                ) && */
+                ) &&
                 (
                     Passenger == other.Passenger ||
                     Passenger != null &&
