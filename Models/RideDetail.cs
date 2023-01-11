@@ -20,11 +20,11 @@ namespace LyftAPI.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public RideStatusEnum? Status { get; set; } = RideStatusEnum.PendingEnum;
 
-        [DataMember(Name = "ride_type")]
+        [DataMember(Name = "rideType")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RideTypeEnumWithOther? RideType { get; set; } = RideTypeEnumWithOther.LyftEnum;
 
-        [DataMember(Name = "ride_id")]
+        [DataMember(Name = "rideId")]
         public string RideId { get; set; }
 
         [DataMember(Name = "passenger")]
@@ -51,23 +51,23 @@ namespace LyftAPI.Models
         [DataMember(Name = "location")]
         public RideLocation? Location { get; set; }
 
-        [DataMember(Name = "primetime_percentage")]
+        [DataMember(Name = "primetimePercentage")]
         public string? PrimetimePercentage { get; set; }
 
         [DataMember(Name = "price")]
         public Cost? Price { get; set; }
 
-        [DataMember(Name = "line_items")]
+        [DataMember(Name = "lineItems")]
         public List<LineItem>? LineItems { get; set; }
 
-        [DataMember(Name = "can_cancel")]
+        [DataMember(Name = "canCancel")]
         [JsonConverter(typeof(StringEnumConverter))]
         public List<RideDetail.CanCancelEnum>? CanCancel { get; set; }
 
-        [DataMember(Name = "canceled_by")]
+        [DataMember(Name = "canceledBy")]
         public string? CanceledBy { get; set; }
 
-        [DataMember(Name = "cancellation_price")]
+        [DataMember(Name = "cancellationPrice")]
         public CancellationCost? CancellationPrice { get; set; }
 
         [DataMember(Name = "rating")]
@@ -76,10 +76,10 @@ namespace LyftAPI.Models
         [DataMember(Name = "feedback")]
         public string? Feedback { get; set; }
 
-        [DataMember(Name = "route_url")]
+        [DataMember(Name = "routeUrl")]
         public string RouteUrl { get; set; } = "Exempt";
 
-        [DataMember(Name = "requested_at")]
+        [DataMember(Name = "requestedAt")]
         public DateTimeOffset? RequestedAt { get; set; }
 
         [JsonConverter(typeof(StringEnumConverter))]
