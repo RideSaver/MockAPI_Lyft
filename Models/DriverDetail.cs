@@ -25,23 +25,8 @@ namespace LyftAPI.Models
         /// <param name="imageUrl">The driver&#39;s image url.</param>
         public DriverDetail(string firstName = default(string), string phoneNumber = default(string), string rating = default(string), string imageUrl = default(string))
         {
-            // to ensure "firstName" is required (not null)
-            if (firstName == null)
-            {
-                throw new ArgumentNullException("firstName is a required property for DriverDetail and cannot be null");
-            }
             this.FirstName = firstName;
-            // to ensure "phoneNumber" is required (not null)
-            if (phoneNumber == null)
-            {
-                throw new ArgumentNullException("phoneNumber is a required property for DriverDetail and cannot be null");
-            }
             this.PhoneNumber = phoneNumber;
-            // to ensure "rating" is required (not null)
-            if (rating == null)
-            {
-                throw new ArgumentNullException("rating is a required property for DriverDetail and cannot be null");
-            }
             this.Rating = rating;
             this.ImageUrl = imageUrl;
         }
@@ -54,7 +39,7 @@ namespace LyftAPI.Models
         public string FirstName { get; set; }
 
         /// <summary>
-        /// The driver&#39;s contact phone number. Must be E.164 formatted. 
+        /// The driver&#39;s contact phone number. Must be E.164 formatted.
         /// </summary>
         /// <value>The driver&#39;s contact phone number. Must be E.164 formatted. </value>
         [DataMember(Name = "phone_number", IsRequired = true, EmitDefaultValue = true)]

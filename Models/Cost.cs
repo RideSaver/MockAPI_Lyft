@@ -25,17 +25,7 @@ namespace LyftAPI.Models
         public Cost(int amount = default(int), string currency = default(string), string description = default(string))
         {
             this.Amount = amount;
-            // to ensure "currency" is required (not null)
-            if (currency == null)
-            {
-                throw new ArgumentNullException("currency is a required property for Cost and cannot be null");
-            }
             this.Currency = currency;
-            // to ensure "description" is required (not null)
-            if (description == null)
-            {
-                throw new ArgumentNullException("description is a required property for Cost and cannot be null");
-            }
             this.Description = description;
         }
 

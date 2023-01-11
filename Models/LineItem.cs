@@ -21,18 +21,8 @@ namespace LyftAPI.Models
             /// <param name="currency">The currency for the amount (required).</param>
             public LineItem(string type = default(string), int amount = default(int), string currency = default(string))
             {
-                // to ensure "type" is required (not null)
-                if (type == null)
-                {
-                    throw new ArgumentNullException("type is a required property for LineItem and cannot be null");
-                }
                 this.Type = type;
                 this.Amount = amount;
-                // to ensure "currency" is required (not null)
-                if (currency == null)
-                {
-                    throw new ArgumentNullException("currency is a required property for LineItem and cannot be null");
-                }
                 this.Currency = currency;
             }
 
