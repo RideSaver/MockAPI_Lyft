@@ -27,17 +27,7 @@ namespace LyftAPI.Models
         public CancellationCost(int amount = default(int), string currency = default(string), string description = default(string), string token = default(string), int tokenDuration = default(int))
         {
             this.Amount = amount;
-            // to ensure "currency" is required (not null)
-            if (currency == null)
-            {
-                throw new ArgumentNullException("currency is a required property for CancellationCost and cannot be null");
-            }
             this.Currency = currency;
-            // to ensure "description" is required (not null)
-            if (description == null)
-            {
-                throw new ArgumentNullException("description is a required property for CancellationCost and cannot be null");
-            }
             this.Description = description;
             this.Token = token;
             this.TokenDuration = tokenDuration;

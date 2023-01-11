@@ -28,30 +28,10 @@ namespace LyftAPI.Models
         /// <param name="imageUrl">The vehicle&#39;s image url (required).</param>
         public VehicleDetail(string make = default(string), string model = default(string), int year = default(int), string licensePlate = default(string), string licensePlateState = default(string), string color = default(string), string imageUrl = default(string))
         {
-            // to ensure "model" is required (not null)
-            if (model == null)
-            {
-                throw new ArgumentNullException("model is a required property for VehicleDetail and cannot be null");
-            }
             this.Model = model;
             this.Year = year;
-            // to ensure "licensePlate" is required (not null)
-            if (licensePlate == null)
-            {
-                throw new ArgumentNullException("licensePlate is a required property for VehicleDetail and cannot be null");
-            }
             this.LicensePlate = licensePlate;
-            // to ensure "color" is required (not null)
-            if (color == null)
-            {
-                throw new ArgumentNullException("color is a required property for VehicleDetail and cannot be null");
-            }
             this.Color = color;
-            // to ensure "imageUrl" is required (not null)
-            if (imageUrl == null)
-            {
-                throw new ArgumentNullException("imageUrl is a required property for VehicleDetail and cannot be null");
-            }
             this.ImageUrl = imageUrl;
             this.Make = make;
             this.LicensePlateState = licensePlateState;
