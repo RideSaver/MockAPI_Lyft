@@ -8,10 +8,10 @@ namespace LyftAPI.Repository
 {
     public class UserRepository : IUserRepository
     {
-        public RideDetail GetUserRide(string id)
+        public async Task<RideDetail> GetUserRide(string id)
         {
             var rideDetailResponse = new RideDetail();
-            rideDetailResponse = RideDetailGenerator.GenerateRideDetail(2)!.First();
+            rideDetailResponse = await Task.FromResult(RideDetailGenerator.GenerateRideDetail(2)!.First());
 
             return rideDetailResponse;
         }

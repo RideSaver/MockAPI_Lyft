@@ -12,20 +12,35 @@ namespace LyftAPI.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
-        public UserController(IUserRepository userRepository) => _userRepository = userRepository;
+        private readonly ILogger<UserController> _logger;
+        public UserController(IUserRepository userRepository, ILogger<UserController> logger)
+        {
+            _userRepository = userRepository;
+            _logger = logger;
+        }
+
+        [HttpGet]
+        [Route("/rides/{id}")]
+        [Produces("application/json")]
+        public async Task<ActionResult<RideDetail>> GetUserRide([FromRoute] string id)
+        {
+            _logger.LogInformation($"[LyftAPI::UserController::GetUserRide] Method invoked with RideID: {id}");
+
+            var rideId = id.ToString();
+            if(rideId is null) { return BadRequest("Invalid Ride ID"); }
+
+            var rideDetail = await _userRepository.GetUserRide(rideId);
+
+            _logger.LogInformation($"[LyftAPI::UserController::GetUserRide] Returnnig (RideDetail) to the caller... \n{rideDetail}");
+
+            return Content(rideDetail.ToJson(), "application/json");
+        }
 
         [HttpPost]
         [Route("/rides/{id}/cancel")]
         public IActionResult CancelUserRide([FromRoute][Required] string id, [FromBody] CancellationRequest body)
         {
             return new NoContentResult(); // Validation
-        }
-
-        [HttpGet]
-        [Route("/rides/{id}")]
-        public IActionResult GetUserRide([FromRoute] string id)
-        {
-            return new OkObjectResult(_userRepository.GetUserRide(id));
         }
 
         [HttpGet]
