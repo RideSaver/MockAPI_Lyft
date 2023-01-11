@@ -5,17 +5,65 @@ using Newtonsoft.Json;
 
 namespace LyftAPI.Models
 {
+    /// <summary>
+    /// Cost
+    /// </summary>
     [DataContract(Name = "Cost")]
-    public class Cost : IEquatable<Cost>
+    public partial class Cost : IEquatable<Cost>, IValidatableObject
     {
-        [DataMember]
-        public int? Amount { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Cost" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        protected Cost() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Cost" /> class.
+        /// </summary>
+        /// <param name="amount">Total price of the ride (required).</param>
+        /// <param name="currency">The ISO 4217 currency code for the amount (e.g. USD) (required).</param>
+        /// <param name="description">The description for the cost (required).</param>
+        public Cost(int amount = default(int), string currency = default(string), string description = default(string))
+        {
+            this.Amount = amount;
+            // to ensure "currency" is required (not null)
+            if (currency == null)
+            {
+                throw new ArgumentNullException("currency is a required property for Cost and cannot be null");
+            }
+            this.Currency = currency;
+            // to ensure "description" is required (not null)
+            if (description == null)
+            {
+                throw new ArgumentNullException("description is a required property for Cost and cannot be null");
+            }
+            this.Description = description;
+        }
 
-        [DataMember]
-        public string? Currency { get; set; }
+        /// <summary>
+        /// Total price of the ride
+        /// </summary>
+        /// <value>Total price of the ride</value>
+        [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = true)]
+        public int Amount { get; set; }
 
-        [DataMember]
-        public string? Description { get; set; }
+        /// <summary>
+        /// The ISO 4217 currency code for the amount (e.g. USD)
+        /// </summary>
+        /// <value>The ISO 4217 currency code for the amount (e.g. USD)</value>
+        [DataMember(Name = "currency", IsRequired = true, EmitDefaultValue = true)]
+        public string Currency { get; set; }
+
+        /// <summary>
+        /// The description for the cost
+        /// </summary>
+        /// <value>The description for the cost</value>
+        [DataMember(Name = "description", IsRequired = true, EmitDefaultValue = true)]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Returns the string presentation of the object
+        /// </summary>
+        /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -26,69 +74,85 @@ namespace LyftAPI.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-        public string ToJson()
+
+        /// <summary>
+        /// Returns the JSON string presentation of the object
+        /// </summary>
+        /// <returns>JSON string presentation of the object</returns>
+        public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
-        public override bool Equals(object obj)
+        /// <summary>
+        /// Returns true if objects are equal
+        /// </summary>
+        /// <param name="input">Object to be compared</param>
+        /// <returns>Boolean</returns>
+        public override bool Equals(object input)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((Cost)obj);
+            return this.Equals(input as Cost);
         }
-        public bool Equals(Cost other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
 
-            return 
+        /// <summary>
+        /// Returns true if Cost instances are equal
+        /// </summary>
+        /// <param name="input">Instance of Cost to be compared</param>
+        /// <returns>Boolean</returns>
+        public bool Equals(Cost input)
+        {
+            if (input == null)
+            {
+                return false;
+            }
+            return
                 (
-                    Amount == other.Amount ||
-                    Amount != null &&
-                    Amount.Equals(other.Amount)
-                ) && 
+                    this.Amount == input.Amount ||
+                    this.Amount.Equals(input.Amount)
+                ) &&
                 (
-                    Currency == other.Currency ||
-                    Currency != null &&
-                    Currency.Equals(other.Currency)
-                ) && 
+                    this.Currency == input.Currency ||
+                    (this.Currency != null &&
+                    this.Currency.Equals(input.Currency))
+                ) &&
                 (
-                    Description == other.Description ||
-                    Description != null &&
-                    Description.Equals(other.Description)
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
                 );
         }
+
+        /// <summary>
+        /// Gets the hash code
+        /// </summary>
+        /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
             unchecked // Overflow is fine, just wrap
             {
-                var hashCode = 41;
-                // Suitable nullity checks etc, of course :)
-                    if (Amount != null)
-                    hashCode = hashCode * 59 + Amount.GetHashCode();
-                    if (Currency != null)
-                    hashCode = hashCode * 59 + Currency.GetHashCode();
-                    if (Description != null)
-                    hashCode = hashCode * 59 + Description.GetHashCode();
+                int hashCode = 41;
+                hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                if (this.Currency != null)
+                {
+                    hashCode = (hashCode * 59) + this.Currency.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                }
                 return hashCode;
             }
         }
 
-        #region Operators
-        #pragma warning disable 1591
-
-        public static bool operator ==(Cost left, Cost right)
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            return Equals(left, right);
+            yield break;
         }
-
-        public static bool operator !=(Cost left, Cost right)
-        {
-            return !Equals(left, right);
-        }
-
-        #pragma warning restore 1591
-        #endregion Operators
     }
+
 }

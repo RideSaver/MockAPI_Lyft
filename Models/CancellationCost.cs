@@ -1,27 +1,87 @@
 using System.Text;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace LyftAPI.Models
 {
+    /// <summary>
+    /// CancellationCost
+    /// </summary>
     [DataContract(Name = "CancellationCost")]
-    public class CancellationCost :IEquatable<CancellationCost>
+    public partial class CancellationCost : IEquatable<CancellationCost>, IValidatableObject
     {
-        [DataMember]
-        public int? Amount { get; set; } = 5;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CancellationCost" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        protected CancellationCost() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CancellationCost" /> class.
+        /// </summary>
+        /// <param name="amount">Total price of the ride (required).</param>
+        /// <param name="currency">The ISO 4217 currency code for the amount (e.g. USD) (required).</param>
+        /// <param name="description">The description for the cost (required).</param>
+        /// <param name="token">Token used to confirm the fee when cancelling a request.</param>
+        /// <param name="tokenDuration">How long, in seconds, before the token expires.</param>
+        public CancellationCost(int amount = default(int), string currency = default(string), string description = default(string), string token = default(string), int tokenDuration = default(int))
+        {
+            this.Amount = amount;
+            // to ensure "currency" is required (not null)
+            if (currency == null)
+            {
+                throw new ArgumentNullException("currency is a required property for CancellationCost and cannot be null");
+            }
+            this.Currency = currency;
+            // to ensure "description" is required (not null)
+            if (description == null)
+            {
+                throw new ArgumentNullException("description is a required property for CancellationCost and cannot be null");
+            }
+            this.Description = description;
+            this.Token = token;
+            this.TokenDuration = tokenDuration;
+        }
 
-        [DataMember]
-        public string? Currency { get; set; } = "USD";
+        /// <summary>
+        /// Total price of the ride
+        /// </summary>
+        /// <value>Total price of the ride</value>
+        [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = true)]
+        public int Amount { get; set; }
 
-        [DataMember]
-        public string? Description { get; set; } = "Cancellation Cost Breakdown";
+        /// <summary>
+        /// The ISO 4217 currency code for the amount (e.g. USD)
+        /// </summary>
+        /// <value>The ISO 4217 currency code for the amount (e.g. USD)</value>
+        [DataMember(Name = "currency", IsRequired = true, EmitDefaultValue = true)]
+        public string Currency { get; set; }
 
-        [DataMember]
-        public string Token { get; set; } = "CancellationCostToken";
+        /// <summary>
+        /// The description for the cost
+        /// </summary>
+        /// <value>The description for the cost</value>
+        [DataMember(Name = "description", IsRequired = true, EmitDefaultValue = true)]
+        public string Description { get; set; }
 
-        [DataMember]
-        public int? TokenDuration { get; set; } = 150;
+        /// <summary>
+        /// Token used to confirm the fee when cancelling a request
+        /// </summary>
+        /// <value>Token used to confirm the fee when cancelling a request</value>
+        [DataMember(Name = "token", EmitDefaultValue = false)]
+        public string Token { get; set; }
 
+        /// <summary>
+        /// How long, in seconds, before the token expires
+        /// </summary>
+        /// <value>How long, in seconds, before the token expires</value>
+        [DataMember(Name = "token_duration", EmitDefaultValue = false)]
+        public int TokenDuration { get; set; }
+
+        /// <summary>
+        /// Returns the string presentation of the object
+        /// </summary>
+        /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -34,63 +94,105 @@ namespace LyftAPI.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-        public string ToJson()
+
+        /// <summary>
+        /// Returns the JSON string presentation of the object
+        /// </summary>
+        /// <returns>JSON string presentation of the object</returns>
+        public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
-        }
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((CancellationCost)obj);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
-        public bool Equals(CancellationCost other)
+        /// <summary>
+        /// Returns true if objects are equal
+        /// </summary>
+        /// <param name="input">Object to be compared</param>
+        /// <returns>Boolean</returns>
+        public override bool Equals(object input)
         {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
+            return this.Equals(input as CancellationCost);
+        }
 
-            return 
+        /// <summary>
+        /// Returns true if CancellationCost instances are equal
+        /// </summary>
+        /// <param name="input">Instance of CancellationCost to be compared</param>
+        /// <returns>Boolean</returns>
+        public bool Equals(CancellationCost input)
+        {
+            if (input == null)
+            {
+                return false;
+            }
+            return
                 (
-                    Token == other.Token ||
-                    Token != null &&
-                    Token.Equals(other.Token)
-                ) && 
+                    this.Amount == input.Amount ||
+                    this.Amount.Equals(input.Amount)
+                ) &&
                 (
-                    TokenDuration == other.TokenDuration ||
-                    TokenDuration != null &&
-                    TokenDuration.Equals(other.TokenDuration)
+                    this.Currency == input.Currency ||
+                    (this.Currency != null &&
+                    this.Currency.Equals(input.Currency))
+                ) &&
+                (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
+                ) &&
+                (
+                    this.Token == input.Token ||
+                    (this.Token != null &&
+                    this.Token.Equals(input.Token))
+                ) &&
+                (
+                    this.TokenDuration == input.TokenDuration ||
+                    this.TokenDuration.Equals(input.TokenDuration)
                 );
         }
 
+        /// <summary>
+        /// Gets the hash code
+        /// </summary>
+        /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
             unchecked // Overflow is fine, just wrap
             {
-                var hashCode = 41;
-                // Suitable nullity checks etc, of course :)
-                    if (Token != null)
-                    hashCode = hashCode * 59 + Token.GetHashCode();
-                    if (TokenDuration != null)
-                    hashCode = hashCode * 59 + TokenDuration.GetHashCode();
+                int hashCode = 41;
+                hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                if (this.Currency != null)
+                {
+                    hashCode = (hashCode * 59) + this.Currency.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                }
+                if (this.Token != null)
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.TokenDuration.GetHashCode();
                 return hashCode;
             }
         }
 
-        #region Operators
-        #pragma warning disable 1591
-
-        public static bool operator ==(CancellationCost left, CancellationCost right)
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            return Equals(left, right);
-        }
+            // TokenDuration (int) minimum
+            if (this.TokenDuration < (int)0)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TokenDuration, must be a value greater than or equal to 0.", new[] { "TokenDuration" });
+            }
 
-        public static bool operator !=(CancellationCost left, CancellationCost right)
-        {
-            return !Equals(left, right);
+            yield break;
         }
-
-        #pragma warning restore 1591
-        #endregion Operators
     }
+
 }

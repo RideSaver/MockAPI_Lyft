@@ -5,32 +5,114 @@ using Newtonsoft.Json;
 
 namespace LyftAPI.Models
 {
-    [DataContract]
-    public class VehicleDetail : IEquatable<VehicleDetail>
+    /// <summary>
+    /// VehicleDetail
+    /// </summary>
+    [DataContract(Name = "VehicleDetail")]
+    public partial class VehicleDetail : IEquatable<VehicleDetail>, IValidatableObject
     {
-        [DataMember]
-        public string? Make { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VehicleDetail" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        protected VehicleDetail() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VehicleDetail" /> class.
+        /// </summary>
+        /// <param name="make">The vehicle&#39;s maker.</param>
+        /// <param name="model">The vehicle&#39;s model (required).</param>
+        /// <param name="year">The vehicle&#39;s model year (required).</param>
+        /// <param name="licensePlate">The vehicle&#39;s license plate (required).</param>
+        /// <param name="licensePlateState">The vehicle&#39;s license plate state.</param>
+        /// <param name="color">The vehicle&#39;s color (required).</param>
+        /// <param name="imageUrl">The vehicle&#39;s image url (required).</param>
+        public VehicleDetail(string make = default(string), string model = default(string), int year = default(int), string licensePlate = default(string), string licensePlateState = default(string), string color = default(string), string imageUrl = default(string))
+        {
+            // to ensure "model" is required (not null)
+            if (model == null)
+            {
+                throw new ArgumentNullException("model is a required property for VehicleDetail and cannot be null");
+            }
+            this.Model = model;
+            this.Year = year;
+            // to ensure "licensePlate" is required (not null)
+            if (licensePlate == null)
+            {
+                throw new ArgumentNullException("licensePlate is a required property for VehicleDetail and cannot be null");
+            }
+            this.LicensePlate = licensePlate;
+            // to ensure "color" is required (not null)
+            if (color == null)
+            {
+                throw new ArgumentNullException("color is a required property for VehicleDetail and cannot be null");
+            }
+            this.Color = color;
+            // to ensure "imageUrl" is required (not null)
+            if (imageUrl == null)
+            {
+                throw new ArgumentNullException("imageUrl is a required property for VehicleDetail and cannot be null");
+            }
+            this.ImageUrl = imageUrl;
+            this.Make = make;
+            this.LicensePlateState = licensePlateState;
+        }
 
-        [DataMember]
-        public string? Model { get; set; }
+        /// <summary>
+        /// The vehicle&#39;s maker
+        /// </summary>
+        /// <value>The vehicle&#39;s maker</value>
+        [DataMember(Name = "make", EmitDefaultValue = false)]
+        public string Make { get; set; }
 
-        [DataMember]
-        public int? Year { get; set; }
-            
-        [DataMember]
-        public string? LicensePlate { get; set; }
+        /// <summary>
+        /// The vehicle&#39;s model
+        /// </summary>
+        /// <value>The vehicle&#39;s model</value>
+        [DataMember(Name = "model", IsRequired = true, EmitDefaultValue = true)]
+        public string Model { get; set; }
 
-        [DataMember]
-        public string? LicensePlateState { get; set; }
+        /// <summary>
+        /// The vehicle&#39;s model year
+        /// </summary>
+        /// <value>The vehicle&#39;s model year</value>
+        [DataMember(Name = "year", IsRequired = true, EmitDefaultValue = true)]
+        public int Year { get; set; }
 
-        [DataMember]
-        public string? Color { get; set; }
+        /// <summary>
+        /// The vehicle&#39;s license plate
+        /// </summary>
+        /// <value>The vehicle&#39;s license plate</value>
+        [DataMember(Name = "license_plate", IsRequired = true, EmitDefaultValue = true)]
+        public string LicensePlate { get; set; }
 
-        [DataMember]
-        public string ImageUrl { get; set; } = "Exempt";
+        /// <summary>
+        /// The vehicle&#39;s license plate state
+        /// </summary>
+        /// <value>The vehicle&#39;s license plate state</value>
+        [DataMember(Name = "license_plate_state", EmitDefaultValue = false)]
+        public string LicensePlateState { get; set; }
+
+        /// <summary>
+        /// The vehicle&#39;s color
+        /// </summary>
+        /// <value>The vehicle&#39;s color</value>
+        [DataMember(Name = "color", IsRequired = true, EmitDefaultValue = true)]
+        public string Color { get; set; }
+
+        /// <summary>
+        /// The vehicle&#39;s image url
+        /// </summary>
+        /// <value>The vehicle&#39;s image url</value>
+        [DataMember(Name = "image_url", IsRequired = true, EmitDefaultValue = true)]
+        public string ImageUrl { get; set; }
+
+        /// <summary>
+        /// Returns the string presentation of the object
+        /// </summary>
+        /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class VehicleDetail {\n");
             sb.Append("  Make: ").Append(Make).Append("\n");
             sb.Append("  Model: ").Append(Model).Append("\n");
@@ -42,98 +124,121 @@ namespace LyftAPI.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-        public string ToJson()
+
+        /// <summary>
+        /// Returns the JSON string presentation of the object
+        /// </summary>
+        /// <returns>JSON string presentation of the object</returns>
+        public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
-        public override bool Equals(object obj)
+        /// <summary>
+        /// Returns true if objects are equal
+        /// </summary>
+        /// <param name="input">Object to be compared</param>
+        /// <returns>Boolean</returns>
+        public override bool Equals(object input)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((VehicleDetail)obj);
+            return this.Equals(input as VehicleDetail);
         }
-        public bool Equals(VehicleDetail other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
 
-            return 
+        /// <summary>
+        /// Returns true if VehicleDetail instances are equal
+        /// </summary>
+        /// <param name="input">Instance of VehicleDetail to be compared</param>
+        /// <returns>Boolean</returns>
+        public bool Equals(VehicleDetail input)
+        {
+            if (input == null)
+            {
+                return false;
+            }
+            return
                 (
-                    Make == other.Make ||
-                    Make != null &&
-                    Make.Equals(other.Make)
-                ) && 
+                    this.Make == input.Make ||
+                    (this.Make != null &&
+                    this.Make.Equals(input.Make))
+                ) &&
                 (
-                    Model == other.Model ||
-                    Model != null &&
-                    Model.Equals(other.Model)
-                ) && 
+                    this.Model == input.Model ||
+                    (this.Model != null &&
+                    this.Model.Equals(input.Model))
+                ) &&
                 (
-                    Year == other.Year ||
-                    Year != null &&
-                    Year.Equals(other.Year)
-                ) && 
+                    this.Year == input.Year ||
+                    this.Year.Equals(input.Year)
+                ) &&
                 (
-                    LicensePlate == other.LicensePlate ||
-                    LicensePlate != null &&
-                    LicensePlate.Equals(other.LicensePlate)
-                ) && 
+                    this.LicensePlate == input.LicensePlate ||
+                    (this.LicensePlate != null &&
+                    this.LicensePlate.Equals(input.LicensePlate))
+                ) &&
                 (
-                    LicensePlateState == other.LicensePlateState ||
-                    LicensePlateState != null &&
-                    LicensePlateState.Equals(other.LicensePlateState)
-                ) && 
+                    this.LicensePlateState == input.LicensePlateState ||
+                    (this.LicensePlateState != null &&
+                    this.LicensePlateState.Equals(input.LicensePlateState))
+                ) &&
                 (
-                    Color == other.Color ||
-                    Color != null &&
-                    Color.Equals(other.Color)
-                ) && 
+                    this.Color == input.Color ||
+                    (this.Color != null &&
+                    this.Color.Equals(input.Color))
+                ) &&
                 (
-                    ImageUrl == other.ImageUrl ||
-                    ImageUrl != null &&
-                    ImageUrl.Equals(other.ImageUrl)
+                    this.ImageUrl == input.ImageUrl ||
+                    (this.ImageUrl != null &&
+                    this.ImageUrl.Equals(input.ImageUrl))
                 );
         }
 
+        /// <summary>
+        /// Gets the hash code
+        /// </summary>
+        /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
             unchecked // Overflow is fine, just wrap
             {
-                var hashCode = 41;
-                // Suitable nullity checks etc, of course :)
-                    if (Make != null)
-                    hashCode = hashCode * 59 + Make.GetHashCode();
-                    if (Model != null)
-                    hashCode = hashCode * 59 + Model.GetHashCode();
-                    if (Year != null)
-                    hashCode = hashCode * 59 + Year.GetHashCode();
-                    if (LicensePlate != null)
-                    hashCode = hashCode * 59 + LicensePlate.GetHashCode();
-                    if (LicensePlateState != null)
-                    hashCode = hashCode * 59 + LicensePlateState.GetHashCode();
-                    if (Color != null)
-                    hashCode = hashCode * 59 + Color.GetHashCode();
-                    if (ImageUrl != null)
-                    hashCode = hashCode * 59 + ImageUrl.GetHashCode();
+                int hashCode = 41;
+                if (this.Make != null)
+                {
+                    hashCode = (hashCode * 59) + this.Make.GetHashCode();
+                }
+                if (this.Model != null)
+                {
+                    hashCode = (hashCode * 59) + this.Model.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Year.GetHashCode();
+                if (this.LicensePlate != null)
+                {
+                    hashCode = (hashCode * 59) + this.LicensePlate.GetHashCode();
+                }
+                if (this.LicensePlateState != null)
+                {
+                    hashCode = (hashCode * 59) + this.LicensePlateState.GetHashCode();
+                }
+                if (this.Color != null)
+                {
+                    hashCode = (hashCode * 59) + this.Color.GetHashCode();
+                }
+                if (this.ImageUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.ImageUrl.GetHashCode();
+                }
                 return hashCode;
             }
         }
 
-        #region Operators
-        #pragma warning disable 1591
-
-        public static bool operator ==(VehicleDetail left, VehicleDetail right)
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            return Equals(left, right);
+            yield break;
         }
-
-        public static bool operator !=(VehicleDetail left, VehicleDetail right)
-        {
-            return !Equals(left, right);
-        }
-
-        #pragma warning restore 1591
-        #endregion Operators
     }
+
 }

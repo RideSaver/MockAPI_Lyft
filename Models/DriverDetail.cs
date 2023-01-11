@@ -5,21 +5,82 @@ using Newtonsoft.Json;
 
 namespace LyftAPI.Models
 {
-    [DataContract]
-    public class DriverDetail : IEquatable<DriverDetail>
+    /// <summary>
+    /// DriverDetail
+    /// </summary>
+    [DataContract(Name = "DriverDetail")]
+    public partial class DriverDetail : IEquatable<DriverDetail>, IValidatableObject
     {
-        [DataMember]
-        public string? FirstName { get; set; }
-        [DataMember]
-        public string? PhoneNumber { get; set; }
-        [DataMember]
-        public string? Rating { get; set; }
-        [DataMember]
-        public string ImageUrl { get; set; } = "Exempt";
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DriverDetail" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        protected DriverDetail() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DriverDetail" /> class.
+        /// </summary>
+        /// <param name="firstName">The driver&#39;s first name (required).</param>
+        /// <param name="phoneNumber">The driver&#39;s contact phone number. Must be E.164 formatted.  (required).</param>
+        /// <param name="rating">The driver&#39;s rating based in 0-5 scale (required).</param>
+        /// <param name="imageUrl">The driver&#39;s image url.</param>
+        public DriverDetail(string firstName = default(string), string phoneNumber = default(string), string rating = default(string), string imageUrl = default(string))
+        {
+            // to ensure "firstName" is required (not null)
+            if (firstName == null)
+            {
+                throw new ArgumentNullException("firstName is a required property for DriverDetail and cannot be null");
+            }
+            this.FirstName = firstName;
+            // to ensure "phoneNumber" is required (not null)
+            if (phoneNumber == null)
+            {
+                throw new ArgumentNullException("phoneNumber is a required property for DriverDetail and cannot be null");
+            }
+            this.PhoneNumber = phoneNumber;
+            // to ensure "rating" is required (not null)
+            if (rating == null)
+            {
+                throw new ArgumentNullException("rating is a required property for DriverDetail and cannot be null");
+            }
+            this.Rating = rating;
+            this.ImageUrl = imageUrl;
+        }
 
+        /// <summary>
+        /// The driver&#39;s first name
+        /// </summary>
+        /// <value>The driver&#39;s first name</value>
+        [DataMember(Name = "first_name", IsRequired = true, EmitDefaultValue = true)]
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// The driver&#39;s contact phone number. Must be E.164 formatted. 
+        /// </summary>
+        /// <value>The driver&#39;s contact phone number. Must be E.164 formatted. </value>
+        [DataMember(Name = "phone_number", IsRequired = true, EmitDefaultValue = true)]
+        public string PhoneNumber { get; set; }
+
+        /// <summary>
+        /// The driver&#39;s rating based in 0-5 scale
+        /// </summary>
+        /// <value>The driver&#39;s rating based in 0-5 scale</value>
+        [DataMember(Name = "rating", IsRequired = true, EmitDefaultValue = true)]
+        public string Rating { get; set; }
+
+        /// <summary>
+        /// The driver&#39;s image url
+        /// </summary>
+        /// <value>The driver&#39;s image url</value>
+        [DataMember(Name = "image_url", EmitDefaultValue = false)]
+        public string ImageUrl { get; set; }
+
+        /// <summary>
+        /// Returns the string presentation of the object
+        /// </summary>
+        /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class DriverDetail {\n");
             sb.Append("  FirstName: ").Append(FirstName).Append("\n");
             sb.Append("  PhoneNumber: ").Append(PhoneNumber).Append("\n");
@@ -29,78 +90,97 @@ namespace LyftAPI.Models
             return sb.ToString();
         }
 
-        public string ToJson()
+        /// <summary>
+        /// Returns the JSON string presentation of the object
+        /// </summary>
+        /// <returns>JSON string presentation of the object</returns>
+        public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
-        public override bool Equals(object obj)
+        /// <summary>
+        /// Returns true if objects are equal
+        /// </summary>
+        /// <param name="input">Object to be compared</param>
+        /// <returns>Boolean</returns>
+        public override bool Equals(object input)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((DriverDetail)obj);
+            return this.Equals(input as DriverDetail);
         }
 
-        public bool Equals(DriverDetail other)
+        /// <summary>
+        /// Returns true if DriverDetail instances are equal
+        /// </summary>
+        /// <param name="input">Instance of DriverDetail to be compared</param>
+        /// <returns>Boolean</returns>
+        public bool Equals(DriverDetail input)
         {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-
-            return 
+            if (input == null)
+            {
+                return false;
+            }
+            return
                 (
-                    FirstName == other.FirstName ||
-                    FirstName != null &&
-                    FirstName.Equals(other.FirstName)
-                ) && 
+                    this.FirstName == input.FirstName ||
+                    (this.FirstName != null &&
+                    this.FirstName.Equals(input.FirstName))
+                ) &&
                 (
-                    PhoneNumber == other.PhoneNumber ||
-                    PhoneNumber != null &&
-                    PhoneNumber.Equals(other.PhoneNumber)
-                ) && 
+                    this.PhoneNumber == input.PhoneNumber ||
+                    (this.PhoneNumber != null &&
+                    this.PhoneNumber.Equals(input.PhoneNumber))
+                ) &&
                 (
-                    Rating == other.Rating ||
-                    Rating != null &&
-                    Rating.Equals(other.Rating)
-                ) && 
+                    this.Rating == input.Rating ||
+                    (this.Rating != null &&
+                    this.Rating.Equals(input.Rating))
+                ) &&
                 (
-                    ImageUrl == other.ImageUrl ||
-                    ImageUrl != null &&
-                    ImageUrl.Equals(other.ImageUrl)
+                    this.ImageUrl == input.ImageUrl ||
+                    (this.ImageUrl != null &&
+                    this.ImageUrl.Equals(input.ImageUrl))
                 );
         }
 
+        /// <summary>
+        /// Gets the hash code
+        /// </summary>
+        /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
             unchecked // Overflow is fine, just wrap
             {
-                var hashCode = 41;
-                // Suitable nullity checks etc, of course :)
-                    if (FirstName != null)
-                    hashCode = hashCode * 59 + FirstName.GetHashCode();
-                    if (PhoneNumber != null)
-                    hashCode = hashCode * 59 + PhoneNumber.GetHashCode();
-                    if (Rating != null)
-                    hashCode = hashCode * 59 + Rating.GetHashCode();
-                    if (ImageUrl != null)
-                    hashCode = hashCode * 59 + ImageUrl.GetHashCode();
+                int hashCode = 41;
+                if (this.FirstName != null)
+                {
+                    hashCode = (hashCode * 59) + this.FirstName.GetHashCode();
+                }
+                if (this.PhoneNumber != null)
+                {
+                    hashCode = (hashCode * 59) + this.PhoneNumber.GetHashCode();
+                }
+                if (this.Rating != null)
+                {
+                    hashCode = (hashCode * 59) + this.Rating.GetHashCode();
+                }
+                if (this.ImageUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.ImageUrl.GetHashCode();
+                }
                 return hashCode;
             }
         }
 
-        #region Operators
-        #pragma warning disable 1591
-
-        public static bool operator ==(DriverDetail left, DriverDetail right)
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            return Equals(left, right);
+            yield break;
         }
-
-        public static bool operator !=(DriverDetail left, DriverDetail right)
-        {
-            return !Equals(left, right);
-        }
-
-        #pragma warning restore 1591
-        #endregion Operators
     }
+
 }
