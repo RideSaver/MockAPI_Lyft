@@ -8,19 +8,19 @@ namespace LyftAPI.Models
     public class CancellationCost :IEquatable<CancellationCost>
     {
         [DataMember(Name = "amount")]
-        public int? Amount { get; set; }
+        public int? Amount { get; set; } = 5;
 
         [DataMember(Name = "currency")]
-        public string? Currency { get; set; }
+        public string? Currency { get; set; } = "USD";
 
         [DataMember(Name = "description")]
-        public string? Description { get; set; }
+        public string? Description { get; set; } = "Cancellation Cost Breakdown";
 
         [DataMember(Name = "token")]
-        public string? Token { get; set; }
+        public string? Token { get; set; } = "CancellationCostToken";
 
         [DataMember(Name = "token_duration")]
-        public int? TokenDuration { get; set; }
+        public int? TokenDuration { get; set; } = 150;
 
         public override string ToString()
         {

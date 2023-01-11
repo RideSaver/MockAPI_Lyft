@@ -16,7 +16,7 @@ namespace LyftAPI.Models
         public RideStatusEnum? Status { get; set; }
 
         [DataMember(Name = "ride_type")]
-        public RideTypeEnumWithOther? RideType { get; set; }
+        public RideTypeEnumWithOther? RideType { get; set; } = RideTypeEnumWithOther.LyftEnum;
 
         [DataMember(Name = "ride_id")]
         [Required]
@@ -71,7 +71,7 @@ namespace LyftAPI.Models
         public string? Feedback { get; set; }
 
         [DataMember(Name = "route_url")]
-        public string? RouteUrl { get; set; }
+        public string? RouteUrl { get; set; } = "Exempt";
 
         [DataMember(Name = "requested_at")]
         public DateTimeOffset? RequestedAt { get; set; }

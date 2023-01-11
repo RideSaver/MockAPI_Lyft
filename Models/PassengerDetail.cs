@@ -29,7 +29,7 @@ namespace LyftAPI.Models
         /// </summary>
         /// <value>The passenger&#39;s profile image</value>
         [DataMember(Name = "ImageUrl", EmitDefaultValue = false)]
-        public string? ImageUrl { get; set; }
+        public string? ImageUrl { get; set; } = "Exempt";
 
         /// <summary>
         /// The passenger&#39;s rating

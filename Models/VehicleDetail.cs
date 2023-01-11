@@ -27,7 +27,7 @@ namespace LyftAPI.Models
         public string? Color { get; set; }
 
         [DataMember(Name= "image_url")]
-        public string? ImageUrl { get; set; }
+        public string? ImageUrl { get; set; } = "Exempt";
         public override string ToString()
         {
             var sb = new StringBuilder();

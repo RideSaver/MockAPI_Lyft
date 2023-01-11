@@ -20,8 +20,8 @@ namespace LyftAPI.Models
         [DataMember(Name="rating")]
         public string? Rating { get; set; }
 
-        [DataMember(Name= "image_url")]
-        public string? ImageUrl { get; set; }
+        [DataMember(Name = "image_url")]
+        public string? ImageUrl { get; set; } = "Exempt";
 
         public override string ToString()
         {
