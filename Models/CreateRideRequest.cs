@@ -9,7 +9,7 @@ namespace LyftAPI.Models
     public class CreateRideRequest : IEquatable<CreateRideRequest> , IValidatableObject
     {
         [JsonConstructorAttribute]
-        public CreateRideRequest(string? costToken = default(string), RideTypeEnum rideType = default(RideTypeEnum), Location origin = default(Location), Location destination = default(Location), PassengerDetail? passenger = default(PassengerDetail))
+        public CreateRideRequest(string? costToken = default(string), RideTypeEnum rideType = default(RideTypeEnum), Location? origin = default(Location), Location? destination = default(Location), PassengerDetail? passenger = default(PassengerDetail))
         {
             this.CostToken = costToken;
             this.RideType = rideType;

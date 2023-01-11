@@ -4,48 +4,26 @@ using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
 namespace LyftAPI.Models
-{ 
-    [DataContract]
+{
+    [DataContract(Name = "Location")]
     public class Location : IEquatable<Location> , IValidatableObject
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Location" /> class.
-        /// </summary>
         [JsonConstructorAttribute]
-        protected Location() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Location" /> class.
-        /// </summary>
-        /// <param name="lat">The latitude component of a location (required).</param>
-        /// <param name="lng">The longitude component of a location (required).</param>
-        /// <param name="address">A human readable address at/near the given location.</param>
-        public Location(double lat = default(double), double lng = default(double), string address = default(string))
+        public Location(double lat = default(double), double lng = default(double), string? address = default(string))
         {
             this.Lat = lat;
             this.Lng = lng;
             this.Address = address;
         }
 
-        /// <summary>
-        /// The latitude component of a location
-        /// </summary>
-        /// <value>The latitude component of a location</value>
-        [DataMember(Name = "lat", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "lat", EmitDefaultValue = false)]
         public double Lat { get; set; }
 
-        /// <summary>
-        /// The longitude component of a location
-        /// </summary>
-        /// <value>The longitude component of a location</value>
-        [DataMember(Name = "lng", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "lng", EmitDefaultValue = false)]
         public double Lng { get; set; }
 
-        /// <summary>
-        /// A human readable address at/near the given location
-        /// </summary>
-        /// <value>A human readable address at/near the given location</value>
         [DataMember(Name = "address", EmitDefaultValue = false)]
-        public string Address { get; set; }
+        public string? Address { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

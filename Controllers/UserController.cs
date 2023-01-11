@@ -44,9 +44,17 @@ namespace LyftAPI.Controllers
         {
             _logger.LogInformation($"[LyftAPI::UserController::PostUserRides] Method invoked with request body: \n{body}");
 
+            var RideRequest = new CreateRideRequest
+            {
+                RideType = body.RideType,
+                Origin = body.Origin,
+                Destination = body.Destination,
+                Passenger= body.Passenger,
+            };
+
             if(body is null) { return BadRequest("Invalid data receieved!"); }
 
-            var ride = await _userRepository.PostUserRide(body);
+            var ride = await _userRepository.PostUserRide(RideRequest);
 
             _logger.LogInformation($"[LyftAPI::UserController::PostUserRides] Returning (Ride) to the caller... \n{ride}");
 
