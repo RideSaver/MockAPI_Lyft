@@ -11,17 +11,6 @@ namespace LyftAPI.Models
         [JsonConstructorAttribute]
         protected CreateRideRequest() { }
 
-        [JsonConstructorAttribute]
-        public CreateRideRequest(string? costToken, RideTypeEnum? rideType, Location? origin, Location? destination, PassengerDetail? passenger)
-        {
-            RideType = rideType;
-            CostToken = costToken;
-            Origin = origin;
-            Destination = destination;
-            Passenger = passenger;
-        }
-
-        [JsonConstructorAttribute]
         public CreateRideRequest(string? costToken = default(string), RideTypeEnum rideType = default(RideTypeEnum), Location origin = default(Location), Location destination = default(Location), PassengerDetail? passenger = default(PassengerDetail))
         {
             this.CostToken = costToken;
