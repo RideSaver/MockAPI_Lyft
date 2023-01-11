@@ -13,10 +13,10 @@ namespace LyftAPI.Models
         [JsonConstructorAttribute]
         protected CreateRideRequest() { }
 
-        public CreateRideRequest(string? costToken = default(string), RideTypeEnum? rideType = default(RideTypeEnum?), Location origin = default(Location), Location destination = default(Location), PassengerDetail? passenger = default(PassengerDetail))
+        public CreateRideRequest(string? costToken = default(string), RideTypeEnum rideType = default(RideTypeEnum), Location origin = default(Location), Location destination = default(Location), PassengerDetail? passenger = default(PassengerDetail))
         {
             this.CostToken = costToken;
-            this.RideType = (RideTypeEnum)rideType;
+            this.RideType = rideType;
             this.Origin = origin;
             this.Destination = destination;
             this.Passenger = passenger;
