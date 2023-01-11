@@ -3,12 +3,31 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace LyftAPI.Models
-{ 
-    [DataContract]
-    public class RideLocation : Location, IEquatable<RideLocation>
-    { 
-        [DataMember(Name="eta_seconds")]
-        public int? EtaSeconds { get; set; }
+{
+    [DataContract(Name = "RideLocation")]
+    public class RideLocation : IEquatable<RideLocation>
+    {
+        [JsonConstructorAttribute]
+        protected RideLocation() { }
+        public RideLocation(double lat = default(double), double lng = default(double), string address = default(string), int etaSeconds = default(int))
+        {
+            this.Lat = lat;
+            this.Lng = lng;
+            this.Address = address;
+            this.EtaSeconds = etaSeconds;
+        }
+
+        [DataMember(Name = "lat", EmitDefaultValue = true)]
+        public double Lat { get; set; }
+
+        [DataMember(Name = "lng", EmitDefaultValue = true)]
+        public double Lng { get; set; }
+
+        [DataMember(Name = "address", EmitDefaultValue = false)]
+        public string Address { get; set; }
+
+        [DataMember(Name = "eta_seconds", EmitDefaultValue = false)]
+        public int EtaSeconds { get; set; }
         public override string ToString()
         {
             var sb = new StringBuilder();

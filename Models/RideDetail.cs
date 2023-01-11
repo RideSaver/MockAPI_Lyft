@@ -1,84 +1,116 @@
 using System.Text;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.ComponentModel.DataAnnotations;
 
 namespace LyftAPI.Models
-{ 
-    [DataContract]
-    public class RideDetail : IEquatable<RideDetail>
-    { 
-        [DataMember(Name="ride_id")]
-        public string RideId { get; set; }
-
-        [DataMember(Name="status")]
+{
+    /// <summary>
+    /// Detail information about a ride
+    /// </summary>
+    [DataContract(Name = "RideDetail")]
+    public partial class RideDetail : IEquatable<RideDetail>, IValidatableObject
+    {
+        [DataMember(Name = "status", EmitDefaultValue = false)]
         public RideStatusEnum? Status { get; set; }
 
-        /*[DataMember(Name="ride_type")]
-        public RideTypeEnumWithOther? RideType { get; set; }*/
+        [DataMember(Name = "ride_type", EmitDefaultValue = false)]
+        public RideTypeEnumWithOther? RideType { get; set; }
 
-        [DataMember(Name="passenger")]
-        public PassengerDetail Passenger { get; set; }
-
-        [DataMember(Name="driver")]
-        public DriverDetail Driver { get; set; }
-
-        [DataMember(Name="vehicle")]
-        public VehicleDetail Vehicle { get; set; }
-
-        [DataMember(Name="origin")]
-        public RideLocation Origin { get; set; }
-
-        [DataMember(Name="destination")]
-        public RideLocation Destination { get; set; }
-
-        [DataMember(Name="pickup")]
-        public PickupDropoffLocation Pickup { get; set; }
-
-        [DataMember(Name="dropoff")]
-        public PickupDropoffLocation Dropoff { get; set; }
-
-        [DataMember(Name="location")]
-        public RideLocation Location { get; set; }
-
-        [DataMember(Name="primetime_percentage")]
-        public string PrimetimePercentage { get; set; }
-
-        [DataMember(Name="price")]
-        public Cost Price { get; set; }
-
-        [DataMember(Name="line_items")]
-        public List<LineItem> LineItems { get; set; }
-
-        [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public enum CanCancelEnum
         {
             [EnumMember(Value = "driver")]
-            DriverEnum = 0,
+            Driver = 1,
+
             [EnumMember(Value = "passenger")]
-            PassengerEnum = 1,
+            Passenger = 2,
+
             [EnumMember(Value = "dispatcher")]
-            DispatcherEnum = 2        }
+            Dispatcher = 3
 
-        [DataMember(Name="can_cancel")]
-        public List<CanCancelEnum> CanCancel { get; set; }
+        }
+        public RideDetail(string rideId = default(string), RideStatusEnum? status = default(RideStatusEnum?), RideTypeEnumWithOther? rideType = default(RideTypeEnumWithOther?), PassengerDetail passenger = default(PassengerDetail), DriverDetail driver = default(DriverDetail), VehicleDetail vehicle = default(VehicleDetail), RideLocation origin = default(RideLocation), RideLocation destination = default(RideLocation), PickupDropoffLocation pickup = default(PickupDropoffLocation), PickupDropoffLocation dropoff = default(PickupDropoffLocation), RideLocation location = default(RideLocation), string primetimePercentage = default(string), Cost price = default(Cost), List<LineItem> lineItems = default(List<LineItem>), List<CanCancelEnum> canCancel = default(List<CanCancelEnum>), string canceledBy = default(string), CancellationCost cancellationPrice = default(CancellationCost), int rating = default(int), string feedback = default(string), string routeUrl = default(string), DateTimeOffset requestedAt = default(DateTimeOffset))
+        {
+            this.RideId = rideId;
+            this.Status = status;
+            this.RideType = rideType;
+            this.Passenger = passenger;
+            this.Driver = driver;
+            this.Vehicle = vehicle;
+            this.Origin = origin;
+            this.Destination = destination;
+            this.Pickup = pickup;
+            this.Dropoff = dropoff;
+            this.Location = location;
+            this.PrimetimePercentage = primetimePercentage;
+            this.Price = price;
+            this.LineItems = lineItems;
+            this.CanCancel = canCancel;
+            this.CanceledBy = canceledBy;
+            this.CancellationPrice = cancellationPrice;
+            this.Rating = rating;
+            this.Feedback = feedback;
+            this.RouteUrl = routeUrl;
+            this.RequestedAt = requestedAt;
+        }
+        [DataMember(Name = "ride_id", EmitDefaultValue = false)]
+        public string RideId { get; set; }
 
-        [DataMember(Name="canceled_by")]
+        [DataMember(Name = "passenger", EmitDefaultValue = false)]
+        public PassengerDetail Passenger { get; set; }
+
+        [DataMember(Name = "driver", EmitDefaultValue = false)]
+        public DriverDetail Driver { get; set; }
+
+        [DataMember(Name = "vehicle", EmitDefaultValue = false)]
+        public VehicleDetail Vehicle { get; set; }
+
+        [DataMember(Name = "origin", EmitDefaultValue = false)]
+        public RideLocation Origin { get; set; }
+
+        [DataMember(Name = "destination", EmitDefaultValue = false)]
+        public RideLocation Destination { get; set; }
+
+        [DataMember(Name = "pickup", EmitDefaultValue = false)]
+        public PickupDropoffLocation Pickup { get; set; }
+
+        [DataMember(Name = "dropoff", EmitDefaultValue = false)]
+        public PickupDropoffLocation Dropoff { get; set; }
+
+        [DataMember(Name = "location", EmitDefaultValue = false)]
+        public RideLocation Location { get; set; }
+
+        [DataMember(Name = "primetime_percentage", EmitDefaultValue = false)]
+        public string PrimetimePercentage { get; set; }
+
+        [DataMember(Name = "price", EmitDefaultValue = false)]
+        public Cost Price { get; set; }
+
+        [DataMember(Name = "line_items", EmitDefaultValue = false)]
+        public List<LineItem> LineItems { get; set; }
+
+        [DataMember(Name = "can_cancel", EmitDefaultValue = false)]
+        public List<RideDetail.CanCancelEnum> CanCancel { get; set; }
+
+        [DataMember(Name = "canceled_by", EmitDefaultValue = false)]
         public string CanceledBy { get; set; }
 
-        [DataMember(Name="cancellation_price")]
+        [DataMember(Name = "cancellation_price", EmitDefaultValue = false)]
         public CancellationCost CancellationPrice { get; set; }
 
-        [DataMember(Name="rating")]
-        public int? Rating { get; set; }
+        [DataMember(Name = "rating", EmitDefaultValue = false)]
+        public int Rating { get; set; }
 
-        [DataMember(Name="feedback")]
+        [DataMember(Name = "feedback", EmitDefaultValue = false)]
         public string Feedback { get; set; }
 
-        [DataMember(Name="route_url")]
+        [DataMember(Name = "route_url", EmitDefaultValue = false)]
         public string RouteUrl { get; set; }
 
-        [DataMember(Name="requested_at")]
-        public DateTime? RequestedAt { get; set; }
+        [DataMember(Name = "requested_at", EmitDefaultValue = false)]
+        public DateTimeOffset RequestedAt { get; set; }
         public override string ToString()
         {
             var sb = new StringBuilder();
@@ -281,8 +313,13 @@ namespace LyftAPI.Models
             }
         }
 
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
+
         #region Operators
-        #pragma warning disable 1591
+#pragma warning disable 1591
 
         public static bool operator ==(RideDetail left, RideDetail right)
         {

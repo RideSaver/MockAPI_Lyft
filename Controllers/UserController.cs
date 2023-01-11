@@ -55,6 +55,7 @@ namespace LyftAPI.Controllers
             if(body is null) { return BadRequest("Invalid data receieved!"); }
 
             var ride = await _userRepository.PostUserRide(RideRequest);
+            ride.RideId = new Guid().ToString();
 
             _logger.LogInformation($"[LyftAPI::UserController::PostUserRides] Returning (Ride) to the caller... \n{ride}");
 

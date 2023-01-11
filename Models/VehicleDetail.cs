@@ -4,33 +4,42 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace LyftAPI.Models
-{ 
-    [DataContract]
+{
+    [DataContract(Name = "VehicleDetail")]
     public class VehicleDetail : IEquatable<VehicleDetail>
-    { 
+    {
+        [JsonConstructorAttribute]
+        protected VehicleDetail() { }
+
+        public VehicleDetail(string make = default(string), string model = default(string), int year = default(int), string licensePlate = default(string), string licensePlateState = default(string), string color = default(string), string imageUrl = default(string))
+        {
+            this.Model = model;
+            this.Year = year;
+            this.LicensePlate = licensePlate;
+            this.Color = color;
+            this.ImageUrl = imageUrl;
+            this.Make = make;
+            this.LicensePlateState = licensePlateState;
+        }
+
         [DataMember(Name="make")]
         public string? Make { get; set; }
 
-        [Required]
         [DataMember(Name="model")]
         public string Model { get; set; }
 
-        [Required]
         [DataMember(Name="year")]
         public int? Year { get; set; }
 
-        [Required]
         [DataMember(Name="license_plate")]
         public string LicensePlate { get; set; }
 
         [DataMember(Name="license_plate_state")]
         public string LicensePlateState { get; set; }
 
-        [Required]
         [DataMember(Name="color")]
         public string Color { get; set; }
 
-        [Required]
         [DataMember(Name="image_url")]
         public string ImageUrl { get; set; }
         public override string ToString()

@@ -3,16 +3,38 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace LyftAPI.Models
-{ 
-    [DataContract]
-    public class PickupDropoffLocation : Location, IEquatable<PickupDropoffLocation>
-    { 
-        [DataMember(Name="time")]
-        public DateTime? Time { get; set; }
+{
+    [DataContract(Name = "PickupDropoffLocation")]
+    public class PickupDropoffLocation : IEquatable<PickupDropoffLocation>
+    {
+        [JsonConstructorAttribute]
+        protected PickupDropoffLocation() { }
+        public PickupDropoffLocation(double lat = default(double), double lng = default(double), string address = default(string), DateTimeOffset time = default(DateTimeOffset))
+        {
+            this.Lat = lat;
+            this.Lng = lng;
+            this.Address = address;
+            this.Time = time;
+        }
+
+        [DataMember(Name = "lat", IsRequired = true, EmitDefaultValue = true)]
+        public double Lat { get; set; }
+
+        [DataMember(Name = "lng", IsRequired = true, EmitDefaultValue = true)]
+        public double Lng { get; set; }
+
+        [DataMember(Name = "address", EmitDefaultValue = false)]
+        public string Address { get; set; }
+
+        [DataMember(Name = "time", EmitDefaultValue = false)]
+        public DateTimeOffset Time { get; set; }
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class PickupDropoffLocation {\n");
+            sb.Append("  Lat: ").Append(Lat).Append("\n");
+            sb.Append("  Lng: ").Append(Lng).Append("\n");
+            sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  Time: ").Append(Time).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

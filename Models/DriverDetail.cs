@@ -4,10 +4,21 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace LyftAPI.Models
-{ 
-    [DataContract]
+{
+    [DataContract(Name = "DriverDetail")]
     public class DriverDetail : IEquatable<DriverDetail>
-    { 
+    {
+        [JsonConstructorAttribute]
+        protected DriverDetail() { }
+
+        public DriverDetail(string firstName = default(string), string phoneNumber = default(string), string rating = default(string), string imageUrl = default(string))
+        {
+            this.FirstName = firstName;
+            this.PhoneNumber = phoneNumber;
+            this.Rating = rating;
+            this.ImageUrl = imageUrl;
+        }
+
         [Required]
         [DataMember(Name="first_name")]
         public string FirstName { get; set; }

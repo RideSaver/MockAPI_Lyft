@@ -4,25 +4,31 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace LyftAPI.Models
-{ 
-    [DataContract]
+{
+    [DataContract(Name = "Cost")]
     public class Cost : IEquatable<Cost>
-    { 
-        [Required]
+    {
+        [JsonConstructorAttribute]
+        protected Cost() { }
 
-        [DataMember(Name="amount")]
-        public int? Amount { get; set; }
+        public Cost(int amount = default(int), string currency = default(string), string description = default(string))
+        {
+            this.Amount = amount;
+            this.Currency = currency;
+            this.Description = description;
+        }
 
-        [Required]
-        [DataMember(Name="currency")]
+        [DataMember(Name = "amount", EmitDefaultValue = true)]
+        public int Amount { get; set; }
+
+        [DataMember(Name = "currency", EmitDefaultValue = true)]
         public string Currency { get; set; }
 
-        [Required]
-        [DataMember(Name="description")]
+        [DataMember(Name = "description", EmitDefaultValue = true)]
         public string Description { get; set; }
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class Cost {\n");
             sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("  Currency: ").Append(Currency).Append("\n");

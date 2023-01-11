@@ -3,19 +3,43 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace LyftAPI.Models
-{ 
-    [DataContract]
+{
+    [DataContract(Name = "CancellationCost")]
     public class CancellationCost : Cost, IEquatable<CancellationCost>
-    { 
-        [DataMember(Name="token")]
-        public string Token { get; set; }
+    {
+        [JsonConstructorAttribute]
+        protected CancellationCost() { }
+        public CancellationCost(int amount = default(int), string currency = default(string), string description = default(string), string token = default(string), int tokenDuration = default(int))
+        {
+            this.Amount = amount;
+            this.Currency = currency;
+            this.Description = description;
+            this.Token = token;
+            this.TokenDuration = tokenDuration;
+        }
 
-        [DataMember(Name="token_duration")]
+        [DataMember(Name = "amount", EmitDefaultValue = true)]
+        public int? Amount { get; set; }
+
+        [DataMember(Name = "currency", EmitDefaultValue = true)]
+        public string? Currency { get; set; }
+
+        [DataMember(Name = "description", EmitDefaultValue = true)]
+        public string? Description { get; set; }
+
+        [DataMember(Name = "token", EmitDefaultValue = false)]
+        public string? Token { get; set; }
+
+        [DataMember(Name = "token_duration", EmitDefaultValue = false)]
         public int? TokenDuration { get; set; }
+
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class CancellationCost {\n");
+            sb.Append("  Amount: ").Append(Amount).Append("\n");
+            sb.Append("  Currency: ").Append(Currency).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  TokenDuration: ").Append(TokenDuration).Append("\n");
             sb.Append("}\n");
