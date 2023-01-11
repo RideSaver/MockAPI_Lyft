@@ -34,7 +34,7 @@ namespace LyftAPI.Controllers
 
             _logger.LogInformation($"[LyftAPI::UserController::GetUserRide] Returning (RideDetail) to the caller... \n{rideDetail}");
 
-            return new OkObjectResult(rideDetail);
+            return Content(rideDetail.ToJson(), "application/json");
         }
 
         [HttpPost]
