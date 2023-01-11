@@ -3,6 +3,10 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
+
+using JsonConverter = Newtonsoft.Json.JsonConverter;
+using JsonConverterAttribute = Newtonsoft.Json.JsonConverterAttribute;
 
 namespace LyftAPI.Models
 {
@@ -13,9 +17,11 @@ namespace LyftAPI.Models
     public class RideDetail : IEquatable<RideDetail>
     { 
         [DataMember(Name = "status")]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public RideStatusEnum? Status { get; set; } = RideStatusEnum.PendingEnum;
 
         [DataMember(Name = "ride_type")]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public RideTypeEnumWithOther? RideType { get; set; } = RideTypeEnumWithOther.LyftEnum;
 
         [DataMember(Name = "ride_id")]
@@ -55,6 +61,7 @@ namespace LyftAPI.Models
         public List<LineItem>? LineItems { get; set; }
 
         [DataMember(Name = "can_cancel")]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public List<RideDetail.CanCancelEnum>? CanCancel { get; set; }
 
         [DataMember(Name = "canceled_by")]
