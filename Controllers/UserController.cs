@@ -21,7 +21,6 @@ namespace LyftAPI.Controllers
 
         [HttpGet]
         [Route("/rides/{id}")]
-        [Produces("application/json")]
         public async Task<ActionResult<RideDetail>> GetUserRide([FromRoute] string id)
         {
             _logger.LogInformation($"[LyftAPI::UserController::GetUserRide] Method invoked with RideID: {id}");
@@ -65,7 +64,6 @@ namespace LyftAPI.Controllers
 
         [HttpGet]
         [Route("/rides")]
-        [Produces("application/json")]
         public async Task<ActionResult<InlineResponse200>> GetUserRides([FromQuery][Required()] DateTime? startTime, [FromQuery] DateTime? endTime, [FromQuery][Range(0, 50)] int? limit)
         {
             _logger.LogInformation($"[LyftAPI::UserController::GetUserRides] Method invoked with query data: \n{startTime}, {endTime}, {limit}");

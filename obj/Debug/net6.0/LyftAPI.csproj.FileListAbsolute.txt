@@ -1,9 +1,3 @@
-C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\obj\Debug\net6.0\LyftAPI.csproj.AssemblyReference.cache
-C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\obj\Debug\net6.0\LyftAPI.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\obj\Debug\net6.0\LyftAPI.AssemblyInfoInputs.cache
-C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\obj\Debug\net6.0\LyftAPI.AssemblyInfo.cs
-C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\obj\Debug\net6.0\LyftAPI.csproj.CoreCompileInputs.cache
-C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\obj\Debug\net6.0\LyftAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\bin\Debug\net6.0\nuget.config
 C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\bin\Debug\net6.0\appsettings.json
@@ -13,6 +7,7 @@ C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\bin\Debug\net6.0\LyftAPI.deps.json
 C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\bin\Debug\net6.0\LyftAPI.runtimeconfig.json
 C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\bin\Debug\net6.0\LyftAPI.dll
 C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\bin\Debug\net6.0\LyftAPI.pdb
+C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\bin\Debug\net6.0\AutoBogus.dll
 C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\bin\Debug\net6.0\Bogus.dll
 C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\bin\Debug\net6.0\Docker.DotNet.dll
 C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\bin\Debug\net6.0\Microsoft.OpenApi.dll
@@ -23,7 +18,13 @@ C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\bin\Debug\net6.0\Swashbuckle.AspNe
 C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\bin\Debug\net6.0\TestEnvironment.Docker.dll
+C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\obj\Debug\net6.0\LyftAPI.csproj.AssemblyReference.cache
+C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\obj\Debug\net6.0\LyftAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\obj\Debug\net6.0\LyftAPI.AssemblyInfoInputs.cache
+C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\obj\Debug\net6.0\LyftAPI.AssemblyInfo.cs
+C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\obj\Debug\net6.0\LyftAPI.csproj.CoreCompileInputs.cache
 C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\obj\Debug\net6.0\LyftAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\obj\Debug\net6.0\LyftAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\obj\Debug\net6.0\staticwebassets\msbuild.LyftAPI.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\obj\Debug\net6.0\staticwebassets\msbuild.build.LyftAPI.props
 C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.LyftAPI.props
@@ -38,4 +39,3 @@ C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\obj\Debug\net6.0\refint\LyftAPI.dl
 C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\obj\Debug\net6.0\LyftAPI.pdb
 C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\obj\Debug\net6.0\LyftAPI.genruntimeconfig.cache
 C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\obj\Debug\net6.0\ref\LyftAPI.dll
-C:\Users\JohnI\Desktop\RideSaver\MockAPI_Lyft\bin\Debug\net6.0\AutoBogus.dll

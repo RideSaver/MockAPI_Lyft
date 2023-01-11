@@ -9,9 +9,9 @@ namespace LyftAPI.Models
     /// <summary>
     /// Detail information about a ride
     /// </summary>
-    [DataContract(Name = "RideDetail")]
-    public partial class RideDetail : IEquatable<RideDetail>, IValidatableObject
-    {
+    [DataContract]
+    public class RideDetail : IEquatable<RideDetail>
+    { 
         [DataMember(Name = "status")]
         public RideStatusEnum? Status { get; set; } = RideStatusEnum.PendingEnum;
 
@@ -19,7 +19,6 @@ namespace LyftAPI.Models
         public RideTypeEnumWithOther? RideType { get; set; } = RideTypeEnumWithOther.LyftEnum;
 
         [DataMember(Name = "ride_id")]
-        [Required]
         public string RideId { get; set; }
 
         [DataMember(Name = "passenger")]
@@ -289,11 +288,6 @@ namespace LyftAPI.Models
                     hashCode = hashCode * 59 + RequestedAt.GetHashCode();
                 return hashCode;
             }
-        }
-
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
 
         #region Operators
