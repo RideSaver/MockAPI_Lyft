@@ -38,7 +38,6 @@ namespace LyftAPI.Controllers
 
         [HttpPost]
         [Route("/rides")]
-        [Consumes("application/json")]
         [Produces("application/json")]
         public async Task<ActionResult<Ride>> PostUserRides([FromBody] CreateRideRequest body)
         {
