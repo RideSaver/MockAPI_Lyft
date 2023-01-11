@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace LyftAPI.Models
-{ 
-    [DataContract]
+{
+    [DataContract(Name = "CreateRideRequest")]
     public class CreateRideRequest : IEquatable<CreateRideRequest>
     { 
 

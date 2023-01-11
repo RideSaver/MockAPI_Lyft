@@ -3,14 +3,51 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace LyftAPI.Models
-{ 
-    [DataContract]
-    public class PassengerDetail : UserDetail, IEquatable<PassengerDetail>
-    { 
+{
+    [DataContract(Name = "PassengerDetail")]
+    public class PassengerDetail : IEquatable<PassengerDetail>
+    {
+        [JsonConstructorAttribute]
+        protected PassengerDetail() { }
+        public PassengerDetail(string? firstName = default(string), string? imageUrl = default(string), string? rating = default(string))
+        {
+            this.FirstName = firstName;
+            this.ImageUrl = imageUrl;
+            this.Rating = rating;
+        }
+
+        /// <summary>
+        /// The passenger&#39;s first name
+        /// </summary>
+        /// <value>The passenger&#39;s first name</value>
+        [DataMember(Name = "first_name", EmitDefaultValue = true)]
+        public string? FirstName { get; set; }
+
+        /// <summary>
+        /// The passenger&#39;s profile image
+        /// </summary>
+        /// <value>The passenger&#39;s profile image</value>
+        [DataMember(Name = "image_url", EmitDefaultValue = true)]
+        public string? ImageUrl { get; set; }
+
+        /// <summary>
+        /// The passenger&#39;s rating
+        /// </summary>
+        /// <value>The passenger&#39;s rating</value>
+        [DataMember(Name = "rating", EmitDefaultValue = true)]
+        public string? Rating { get; set; }
+
+        /// <summary>
+        /// Returns the string presentation of the object
+        /// </summary>
+        /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class PassengerDetail {\n");
+            sb.Append("  FirstName: ").Append(FirstName).Append("\n");
+            sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
+            sb.Append("  Rating: ").Append(Rating).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
