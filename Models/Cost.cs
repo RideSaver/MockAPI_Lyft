@@ -8,24 +8,14 @@ namespace LyftAPI.Models
     [DataContract(Name = "Cost")]
     public class Cost : IEquatable<Cost>
     {
-        [JsonConstructorAttribute]
-        protected Cost() { }
+        [DataMember(Name = "amount")]
+        public int? Amount { get; set; }
 
-        public Cost(int amount = default(int), string currency = default(string), string description = default(string))
-        {
-            this.Amount = amount;
-            this.Currency = currency;
-            this.Description = description;
-        }
+        [DataMember(Name = "currency")]
+        public string? Currency { get; set; }
 
-        [DataMember(Name = "amount", EmitDefaultValue = true)]
-        public int Amount { get; set; }
-
-        [DataMember(Name = "currency", EmitDefaultValue = true)]
-        public string Currency { get; set; }
-
-        [DataMember(Name = "description", EmitDefaultValue = true)]
-        public string Description { get; set; }
+        [DataMember(Name = "description")]
+        public string? Description { get; set; }
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -36,7 +26,7 @@ namespace LyftAPI.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

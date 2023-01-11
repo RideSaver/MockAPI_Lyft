@@ -5,32 +5,21 @@ using Newtonsoft.Json;
 namespace LyftAPI.Models
 {
     [DataContract(Name = "CancellationCost")]
-    public class CancellationCost : Cost, IEquatable<CancellationCost>
+    public class CancellationCost :IEquatable<CancellationCost>
     {
-        [JsonConstructorAttribute]
-        protected CancellationCost() { }
-        public CancellationCost(int amount = default(int), string currency = default(string), string description = default(string), string token = default(string), int tokenDuration = default(int))
-        {
-            this.Amount = amount;
-            this.Currency = currency;
-            this.Description = description;
-            this.Token = token;
-            this.TokenDuration = tokenDuration;
-        }
-
-        [DataMember(Name = "amount", EmitDefaultValue = true)]
+        [DataMember(Name = "amount")]
         public int? Amount { get; set; }
 
-        [DataMember(Name = "currency", EmitDefaultValue = true)]
+        [DataMember(Name = "currency")]
         public string? Currency { get; set; }
 
-        [DataMember(Name = "description", EmitDefaultValue = true)]
+        [DataMember(Name = "description")]
         public string? Description { get; set; }
 
-        [DataMember(Name = "token", EmitDefaultValue = false)]
+        [DataMember(Name = "token")]
         public string? Token { get; set; }
 
-        [DataMember(Name = "token_duration", EmitDefaultValue = false)]
+        [DataMember(Name = "token_duration")]
         public int? TokenDuration { get; set; }
 
         public override string ToString()
@@ -45,7 +34,7 @@ namespace LyftAPI.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-        public  new string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

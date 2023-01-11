@@ -8,40 +8,26 @@ namespace LyftAPI.Models
     [DataContract(Name = "VehicleDetail")]
     public class VehicleDetail : IEquatable<VehicleDetail>
     {
-        [JsonConstructorAttribute]
-        protected VehicleDetail() { }
-
-        public VehicleDetail(string make = default(string), string model = default(string), int year = default(int), string licensePlate = default(string), string licensePlateState = default(string), string color = default(string), string imageUrl = default(string))
-        {
-            this.Model = model;
-            this.Year = year;
-            this.LicensePlate = licensePlate;
-            this.Color = color;
-            this.ImageUrl = imageUrl;
-            this.Make = make;
-            this.LicensePlateState = licensePlateState;
-        }
-
         [DataMember(Name="make")]
         public string? Make { get; set; }
 
         [DataMember(Name="model")]
-        public string Model { get; set; }
+        public string? Model { get; set; }
 
         [DataMember(Name="year")]
         public int? Year { get; set; }
 
         [DataMember(Name= "license_plate")]
-        public string LicensePlate { get; set; }
+        public string? LicensePlate { get; set; }
 
         [DataMember(Name= "license_plate_state")]
-        public string LicensePlateState { get; set; }
+        public string? LicensePlateState { get; set; }
 
         [DataMember(Name="color")]
-        public string Color { get; set; }
+        public string? Color { get; set; }
 
         [DataMember(Name= "image_url")]
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
         public override string ToString()
         {
             var sb = new StringBuilder();
@@ -56,7 +42,7 @@ namespace LyftAPI.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

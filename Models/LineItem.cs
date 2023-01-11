@@ -8,23 +8,14 @@ namespace LyftAPI.Models
     [DataContract(Name = "LineItem")]
     public class LineItem : IEquatable<LineItem>
     {
-        [JsonConstructorAttribute]
-        protected LineItem() { }
-        public LineItem(string type = default(string), int amount = default(int), string currency = default(string))
-        {
-            this.Type = type;
-            this.Amount = amount;
-            this.Currency = currency;
-        }
+        [DataMember(Name = "type")]
+        public string? Type { get; set; }
 
-        [DataMember(Name = "type", EmitDefaultValue = true)]
-        public string Type { get; set; }
+        [DataMember(Name = "amount")]
+        public int? Amount { get; set; }
 
-        [DataMember(Name = "amount", EmitDefaultValue = true)]
-        public int Amount { get; set; }
-
-        [DataMember(Name = "currency", EmitDefaultValue = true)]
-        public string Currency { get; set; }
+        [DataMember(Name = "currency")]
+        public string? Currency { get; set; }
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -35,7 +26,7 @@ namespace LyftAPI.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

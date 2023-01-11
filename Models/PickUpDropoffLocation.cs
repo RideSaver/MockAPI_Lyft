@@ -7,27 +7,17 @@ namespace LyftAPI.Models
     [DataContract(Name = "PickupDropoffLocation")]
     public class PickupDropoffLocation : IEquatable<PickupDropoffLocation>
     {
-        [JsonConstructorAttribute]
-        protected PickupDropoffLocation() { }
-        public PickupDropoffLocation(double lat = default(double), double lng = default(double), string address = default(string), DateTimeOffset time = default(DateTimeOffset))
-        {
-            this.Lat = lat;
-            this.Lng = lng;
-            this.Address = address;
-            this.Time = time;
-        }
-
-        [DataMember(Name = "lat", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "lat")]
         public double Lat { get; set; }
 
-        [DataMember(Name = "lng", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "lng")]
         public double Lng { get; set; }
 
-        [DataMember(Name = "address", EmitDefaultValue = false)]
+        [DataMember(Name = "address")]
         public string Address { get; set; }
 
-        [DataMember(Name = "time", EmitDefaultValue = false)]
-        public DateTimeOffset Time { get; set; }
+        [DataMember(Name = "time")]
+        public DateTimeOffset? Time { get; set; }
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -39,7 +29,7 @@ namespace LyftAPI.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-        public  new string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
