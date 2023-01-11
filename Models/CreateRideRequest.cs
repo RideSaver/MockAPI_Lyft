@@ -22,16 +22,16 @@ namespace LyftAPI.Models
             this.Passenger = passenger;
         }
 
-        [DataMember(Name="cost_token")]
+        [DataMember(Name = "cost_token", EmitDefaultValue = false)]
         public string? CostToken { get; set; }
 
-        [DataMember(Name="origin")]
+        [DataMember(Name = "origin", EmitDefaultValue = false)]
         public Location? Origin { get; set; }
 
-        [DataMember(Name="destination")]
+        [DataMember(Name = "destination", EmitDefaultValue = false)]
         public Location? Destination { get; set; }
 
-        [DataMember(Name="passenger")]
+        [DataMember(Name = "passenger", EmitDefaultValue = false)]
         public PassengerDetail? Passenger { get; set; }
 
         public override string ToString()
