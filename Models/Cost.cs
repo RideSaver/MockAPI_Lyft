@@ -26,7 +26,7 @@ namespace LyftAPI.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

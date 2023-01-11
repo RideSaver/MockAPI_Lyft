@@ -13,7 +13,7 @@ namespace LyftAPI.Models
     public partial class RideDetail : IEquatable<RideDetail>, IValidatableObject
     {
         [DataMember(Name = "status")]
-        public RideStatusEnum? Status { get; set; }
+        public RideStatusEnum? Status { get; set; } = RideStatusEnum.PendingEnum;
 
         [DataMember(Name = "ride_type")]
         public RideTypeEnumWithOther? RideType { get; set; } = RideTypeEnumWithOther.LyftEnum;
@@ -71,7 +71,7 @@ namespace LyftAPI.Models
         public string? Feedback { get; set; }
 
         [DataMember(Name = "route_url")]
-        public string? RouteUrl { get; set; } = "Exempt";
+        public string RouteUrl { get; set; } = "Exempt";
 
         [DataMember(Name = "requested_at")]
         public DateTimeOffset? RequestedAt { get; set; }

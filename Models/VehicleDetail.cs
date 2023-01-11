@@ -27,7 +27,7 @@ namespace LyftAPI.Models
         public string? Color { get; set; }
 
         [DataMember(Name= "image_url")]
-        public string? ImageUrl { get; set; } = "Exempt";
+        public string ImageUrl { get; set; } = "Exempt";
         public override string ToString()
         {
             var sb = new StringBuilder();
@@ -42,7 +42,7 @@ namespace LyftAPI.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

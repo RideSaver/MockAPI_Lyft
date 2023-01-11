@@ -8,20 +8,17 @@ namespace LyftAPI.Models
     [DataContract(Name = "DriverDetail")]
     public class DriverDetail : IEquatable<DriverDetail>
     {
-        [Required]
         [DataMember(Name= "first_name")]
         public string? FirstName { get; set; }
 
-        [Required]
         [DataMember(Name= "phone_number")]
         public string? PhoneNumber { get; set; }
 
-        [Required]
         [DataMember(Name="rating")]
         public string? Rating { get; set; }
 
         [DataMember(Name = "image_url")]
-        public string? ImageUrl { get; set; } = "Exempt";
+        public string ImageUrl { get; set; } = "Exempt";
 
         public override string ToString()
         {
@@ -35,7 +32,7 @@ namespace LyftAPI.Models
             return sb.ToString();
         }
 
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

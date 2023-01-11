@@ -10,12 +10,6 @@ namespace LyftAPI.Models
     {
         [JsonConstructorAttribute]
         public PassengerDetail() { }
-        public PassengerDetail(string? firstName = default(string), string? imageUrl = default(string), string? rating = default(string))
-        {
-            this.FirstName = firstName;
-            this.ImageUrl = imageUrl;
-            this.Rating = rating;
-        }
 
         /// <summary>
         /// The passenger&#39;s first name
@@ -52,7 +46,7 @@ namespace LyftAPI.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

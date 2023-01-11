@@ -17,7 +17,7 @@ namespace LyftAPI.Models
         public string? Description { get; set; } = "Cancellation Cost Breakdown";
 
         [DataMember(Name = "token")]
-        public string? Token { get; set; } = "CancellationCostToken";
+        public string Token { get; set; } = "CancellationCostToken";
 
         [DataMember(Name = "token_duration")]
         public int? TokenDuration { get; set; } = 150;
@@ -34,7 +34,7 @@ namespace LyftAPI.Models
             sb.Append("}\n");
             return sb.ToString();
         }
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
