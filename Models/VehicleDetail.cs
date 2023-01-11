@@ -9,7 +9,7 @@ namespace LyftAPI.Models
     /// VehicleDetail
     /// </summary>
     [DataContract(Name = "VehicleDetail")]
-    public partial class VehicleDetail : IEquatable<VehicleDetail>, IValidatableObject
+    public class VehicleDetail : IEquatable<VehicleDetail>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="VehicleDetail" /> class.
@@ -41,50 +41,50 @@ namespace LyftAPI.Models
         /// The vehicle&#39;s maker
         /// </summary>
         /// <value>The vehicle&#39;s maker</value>
-        [DataMember(Name = "make", EmitDefaultValue = false)]
-        public string Make { get; set; }
+        [DataMember(Name = "make")]
+        public string? Make { get; set; }
 
         /// <summary>
         /// The vehicle&#39;s model
         /// </summary>
         /// <value>The vehicle&#39;s model</value>
-        [DataMember(Name = "model", IsRequired = true, EmitDefaultValue = true)]
-        public string Model { get; set; }
+        [DataMember(Name = "model")]
+        public string? Model { get; set; }
 
         /// <summary>
         /// The vehicle&#39;s model year
         /// </summary>
         /// <value>The vehicle&#39;s model year</value>
-        [DataMember(Name = "year", IsRequired = true, EmitDefaultValue = true)]
-        public int Year { get; set; }
+        [DataMember(Name = "year")]
+        public int? Year { get; set; }
 
         /// <summary>
         /// The vehicle&#39;s license plate
         /// </summary>
         /// <value>The vehicle&#39;s license plate</value>
-        [DataMember(Name = "license_plate", IsRequired = true, EmitDefaultValue = true)]
-        public string LicensePlate { get; set; }
+        [DataMember(Name = "license_plate")]
+        public string? LicensePlate { get; set; }
 
         /// <summary>
         /// The vehicle&#39;s license plate state
         /// </summary>
         /// <value>The vehicle&#39;s license plate state</value>
-        [DataMember(Name = "license_plate_state", EmitDefaultValue = false)]
-        public string LicensePlateState { get; set; }
+        [DataMember(Name = "license_plate_state")]
+        public string? LicensePlateState { get; set; }
 
         /// <summary>
         /// The vehicle&#39;s color
         /// </summary>
         /// <value>The vehicle&#39;s color</value>
-        [DataMember(Name = "color", IsRequired = true, EmitDefaultValue = true)]
-        public string Color { get; set; }
+        [DataMember(Name = "color")]
+        public string? Color { get; set; }
 
         /// <summary>
         /// The vehicle&#39;s image url
         /// </summary>
         /// <value>The vehicle&#39;s image url</value>
-        [DataMember(Name = "image_url", IsRequired = true, EmitDefaultValue = true)]
-        public string ImageUrl { get; set; }
+        [DataMember(Name = "image_url")]
+        public string? ImageUrl { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,7 +109,7 @@ namespace LyftAPI.Models
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }

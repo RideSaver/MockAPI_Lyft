@@ -15,21 +15,21 @@ namespace LyftAPI.Models
         /// The passenger&#39;s first name
         /// </summary>
         /// <value>The passenger&#39;s first name</value>
-        [DataMember(Name = "firstName", EmitDefaultValue = false)]
+        [DataMember(Name = "first_name")]
         public string? FirstName { get; set; }
 
         /// <summary>
         /// The passenger&#39;s profile image
         /// </summary>
         /// <value>The passenger&#39;s profile image</value>
-        [DataMember(Name = "ImageUrl", EmitDefaultValue = false)]
+        [DataMember(Name = "image_url")]
         public string? ImageUrl { get; set; } = "Exempt";
 
         /// <summary>
         /// The passenger&#39;s rating
         /// </summary>
         /// <value>The passenger&#39;s rating</value>
-        [DataMember(Name = "rating", EmitDefaultValue = false)]
+        [DataMember(Name = "rating")]
         public string? Rating { get; set; }
 
         /// <summary>

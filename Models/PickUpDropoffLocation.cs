@@ -9,7 +9,7 @@ namespace LyftAPI.Models
     /// PickupDropoffLocation
     /// </summary>
     [DataContract(Name = "PickupDropoffLocation")]
-    public partial class PickupDropoffLocation : IEquatable<PickupDropoffLocation>, IValidatableObject
+    public class PickupDropoffLocation : IEquatable<PickupDropoffLocation>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PickupDropoffLocation" /> class.
@@ -35,29 +35,29 @@ namespace LyftAPI.Models
         /// The latitude component of a location
         /// </summary>
         /// <value>The latitude component of a location</value>
-        [DataMember(Name = "lat", IsRequired = true, EmitDefaultValue = true)]
-        public double Lat { get; set; }
+        [DataMember(Name = "lat")]
+        public double? Lat { get; set; }
 
         /// <summary>
         /// The longitude component of a location
         /// </summary>
         /// <value>The longitude component of a location</value>
-        [DataMember(Name = "lng", IsRequired = true, EmitDefaultValue = true)]
-        public double Lng { get; set; }
+        [DataMember(Name = "lng")]
+        public double? Lng { get; set; }
 
         /// <summary>
         /// A human readable address at/near the given location
         /// </summary>
         /// <value>A human readable address at/near the given location</value>
-        [DataMember(Name = "address", EmitDefaultValue = false)]
-        public string Address { get; set; }
+        [DataMember(Name = "address")]
+        public string? Address { get; set; }
 
         /// <summary>
         /// Server time when the location object is created
         /// </summary>
         /// <value>Server time when the location object is created</value>
-        [DataMember(Name = "time", EmitDefaultValue = false)]
-        public DateTimeOffset Time { get; set; }
+        [DataMember(Name = "time")]
+        public DateTimeOffset? Time { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,7 +79,7 @@ namespace LyftAPI.Models
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }

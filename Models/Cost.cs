@@ -9,7 +9,7 @@ namespace LyftAPI.Models
     /// Cost
     /// </summary>
     [DataContract(Name = "Cost")]
-    public partial class Cost : IEquatable<Cost>, IValidatableObject
+    public class Cost : IEquatable<Cost>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Cost" /> class.
@@ -33,22 +33,22 @@ namespace LyftAPI.Models
         /// Total price of the ride
         /// </summary>
         /// <value>Total price of the ride</value>
-        [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = true)]
-        public int Amount { get; set; }
+        [DataMember(Name = "amount")]
+        public int? Amount { get; set; }
 
         /// <summary>
         /// The ISO 4217 currency code for the amount (e.g. USD)
         /// </summary>
         /// <value>The ISO 4217 currency code for the amount (e.g. USD)</value>
-        [DataMember(Name = "currency", IsRequired = true, EmitDefaultValue = true)]
-        public string Currency { get; set; }
+        [DataMember(Name = "currency")]
+        public string? Currency { get; set; }
 
         /// <summary>
         /// The description for the cost
         /// </summary>
         /// <value>The description for the cost</value>
-        [DataMember(Name = "description", IsRequired = true, EmitDefaultValue = true)]
-        public string Description { get; set; }
+        [DataMember(Name = "description")]
+        public string? Description { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -69,7 +69,7 @@ namespace LyftAPI.Models
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }

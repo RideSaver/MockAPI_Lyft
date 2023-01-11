@@ -30,22 +30,22 @@ namespace LyftAPI.Models
             /// The line item display name for a charge item
             /// </summary>
             /// <value>The line item display name for a charge item</value>
-            [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
-            public string Type { get; set; }
+            [DataMember(Name = "type")]
+            public string? Type { get; set; }
 
             /// <summary>
             /// The line item amount
             /// </summary>
             /// <value>The line item amount</value>
-            [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = true)]
-            public int Amount { get; set; }
+            [DataMember(Name = "amount")]
+            public int? Amount { get; set; }
 
             /// <summary>
             /// The currency for the amount
             /// </summary>
             /// <value>The currency for the amount</value>
-            [DataMember(Name = "currency", IsRequired = true, EmitDefaultValue = true)]
-            public string Currency { get; set; }
+            [DataMember(Name = "currency")]
+            public string? Currency { get; set; }
 
             /// <summary>
             /// Returns the string presentation of the object
@@ -66,7 +66,7 @@ namespace LyftAPI.Models
             /// Returns the JSON string presentation of the object
             /// </summary>
             /// <returns>JSON string presentation of the object</returns>
-            public virtual string ToJson()
+            public string ToJson()
             {
                 return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
             }

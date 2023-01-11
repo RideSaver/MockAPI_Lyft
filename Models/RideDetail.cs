@@ -14,20 +14,19 @@ namespace LyftAPI.Models
     /// Detail information about a ride
     /// </summary>
     [DataContract(Name = "RideDetail")]
-    public partial class RideDetail : IEquatable<RideDetail>, IValidatableObject
+    public class RideDetail : IEquatable<RideDetail>, IValidatableObject
     {
-
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
-        [DataMember(Name = "status", EmitDefaultValue = false)]
+        [DataMember(Name = "status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RideStatusEnum? Status { get; set; }
 
         /// <summary>
         /// Gets or Sets RideType
         /// </summary>
-        [DataMember(Name = "ride_type", EmitDefaultValue = false)]
+        [DataMember(Name = "ride_type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RideTypeEnumWithOther? RideType { get; set; }
         /// <summary>
@@ -111,122 +110,122 @@ namespace LyftAPI.Models
         /// </summary>
         /// <value>The unique ID of this ride</value>
         [DataMember(Name = "ride_id", EmitDefaultValue = false)]
-        public string RideId { get; set; }
+        public string? RideId { get; set; }
 
         /// <summary>
         /// Gets or Sets Passenger
         /// </summary>
-        [DataMember(Name = "passenger", EmitDefaultValue = false)]
-        public PassengerDetail Passenger { get; set; }
+        [DataMember(Name = "passenger")]
+        public PassengerDetail? Passenger { get; set; }
 
         /// <summary>
         /// Gets or Sets Driver
         /// </summary>
-        [DataMember(Name = "driver", EmitDefaultValue = false)]
-        public DriverDetail Driver { get; set; }
+        [DataMember(Name = "driver")]
+        public DriverDetail? Driver { get; set; }
 
         /// <summary>
         /// Gets or Sets Vehicle
         /// </summary>
-        [DataMember(Name = "vehicle", EmitDefaultValue = false)]
-        public VehicleDetail Vehicle { get; set; }
+        [DataMember(Name = "vehicle")]
+        public VehicleDetail? Vehicle { get; set; }
 
         /// <summary>
         /// Gets or Sets Origin
         /// </summary>
-        [DataMember(Name = "origin", EmitDefaultValue = false)]
-        public RideLocation Origin { get; set; }
+        [DataMember(Name = "origin")]
+        public RideLocation? Origin { get; set; }
 
         /// <summary>
         /// Gets or Sets Destination
         /// </summary>
-        [DataMember(Name = "destination", EmitDefaultValue = false)]
-        public RideLocation Destination { get; set; }
+        [DataMember(Name = "destination")]
+        public RideLocation? Destination { get; set; }
 
         /// <summary>
         /// Gets or Sets Pickup
         /// </summary>
-        [DataMember(Name = "pickup", EmitDefaultValue = false)]
-        public PickupDropoffLocation Pickup { get; set; }
+        [DataMember(Name = "pickup")]
+        public PickupDropoffLocation? Pickup { get; set; }
 
         /// <summary>
         /// Gets or Sets Dropoff
         /// </summary>
-        [DataMember(Name = "dropoff", EmitDefaultValue = false)]
-        public PickupDropoffLocation Dropoff { get; set; }
+        [DataMember(Name = "dropoff")]
+        public PickupDropoffLocation? Dropoff { get; set; }
 
         /// <summary>
         /// Gets or Sets Location
         /// </summary>
-        [DataMember(Name = "location", EmitDefaultValue = false)]
-        public RideLocation Location { get; set; }
+        [DataMember(Name = "location")]
+        public RideLocation? Location { get; set; }
 
         /// <summary>
         /// The Prime Time percentage applied to the base price
         /// </summary>
         /// <value>The Prime Time percentage applied to the base price</value>
-        [DataMember(Name = "primetime_percentage", EmitDefaultValue = false)]
-        public string PrimetimePercentage { get; set; }
+        [DataMember(Name = "primetime_percentage")]
+        public string? PrimetimePercentage { get; set; }
 
         /// <summary>
         /// Gets or Sets Price
         /// </summary>
-        [DataMember(Name = "price", EmitDefaultValue = false)]
-        public Cost Price { get; set; }
+        [DataMember(Name = "price")]
+        public Cost? Price { get; set; }
 
         /// <summary>
         /// The break down of cost
         /// </summary>
         /// <value>The break down of cost</value>
-        [DataMember(Name = "line_items", EmitDefaultValue = false)]
-        public List<LineItem> LineItems { get; set; }
+        [DataMember(Name = "line_items")]
+        public List<LineItem>? LineItems { get; set; }
 
         /// <summary>
         /// Gets or Sets CanCancel
         /// </summary>
-        [DataMember(Name = "can_cancel", EmitDefaultValue = false)]
-        public List<RideDetail.CanCancelEnum> CanCancel { get; set; }
+        [DataMember(Name = "can_cancel")]
+        public List<RideDetail.CanCancelEnum>? CanCancel { get; set; }
 
         /// <summary>
         /// The role of user who canceled the ride (if applicable)
         /// </summary>
         /// <value>The role of user who canceled the ride (if applicable)</value>
-        [DataMember(Name = "canceled_by", EmitDefaultValue = false)]
-        public string CanceledBy { get; set; }
+        [DataMember(Name = "canceled_by")]
+        public string? CanceledBy { get; set; }
 
         /// <summary>
         /// Gets or Sets CancellationPrice
         /// </summary>
-        [DataMember(Name = "cancellation_price", EmitDefaultValue = false)]
-        public CancellationCost CancellationPrice { get; set; }
+        [DataMember(Name = "cancellation_price")]
+        public CancellationCost? CancellationPrice { get; set; }
 
         /// <summary>
         /// The rating the user left for this ride, from 1 to 5
         /// </summary>
         /// <value>The rating the user left for this ride, from 1 to 5</value>
-        [DataMember(Name = "rating", EmitDefaultValue = false)]
-        public int Rating { get; set; }
+        [DataMember(Name = "rating")]
+        public int? Rating { get; set; }
 
         /// <summary>
         /// The written feedback the user left for this ride
         /// </summary>
         /// <value>The written feedback the user left for this ride</value>
-        [DataMember(Name = "feedback", EmitDefaultValue = false)]
-        public string Feedback { get; set; }
+        [DataMember(Name = "feedback")]
+        public string? Feedback { get; set; }
 
         /// <summary>
         /// The web view showing the passenger, driver, and route for this ride. This field will only be present for rides created through this API, or that have been shared through the \&quot;Share my Route\&quot; feature 
         /// </summary>
         /// <value>The web view showing the passenger, driver, and route for this ride. This field will only be present for rides created through this API, or that have been shared through the \&quot;Share my Route\&quot; feature </value>
-        [DataMember(Name = "route_url", EmitDefaultValue = false)]
-        public string RouteUrl { get; set; }
+        [DataMember(Name = "route_url")]
+        public string? RouteUrl { get; set; }
 
         /// <summary>
         /// The ride requested timestamp in date and time
         /// </summary>
         /// <value>The ride requested timestamp in date and time</value>
-        [DataMember(Name = "requested_at", EmitDefaultValue = false)]
-        public DateTimeOffset RequestedAt { get; set; }
+        [DataMember(Name = "requested_at")]
+        public DateTimeOffset? RequestedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -265,7 +264,7 @@ namespace LyftAPI.Models
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }

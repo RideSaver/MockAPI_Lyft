@@ -9,7 +9,7 @@ namespace LyftAPI.Models
     /// DriverDetail
     /// </summary>
     [DataContract(Name = "DriverDetail")]
-    public partial class DriverDetail : IEquatable<DriverDetail>, IValidatableObject
+    public class DriverDetail : IEquatable<DriverDetail>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="DriverDetail" /> class.
@@ -35,29 +35,29 @@ namespace LyftAPI.Models
         /// The driver&#39;s first name
         /// </summary>
         /// <value>The driver&#39;s first name</value>
-        [DataMember(Name = "first_name", IsRequired = true, EmitDefaultValue = true)]
-        public string FirstName { get; set; }
+        [DataMember(Name = "first_name")]
+        public string? FirstName { get; set; }
 
         /// <summary>
         /// The driver&#39;s contact phone number. Must be E.164 formatted.
         /// </summary>
         /// <value>The driver&#39;s contact phone number. Must be E.164 formatted. </value>
-        [DataMember(Name = "phone_number", IsRequired = true, EmitDefaultValue = true)]
-        public string PhoneNumber { get; set; }
+        [DataMember(Name = "phone_number")]
+        public string? PhoneNumber { get; set; }
 
         /// <summary>
         /// The driver&#39;s rating based in 0-5 scale
         /// </summary>
         /// <value>The driver&#39;s rating based in 0-5 scale</value>
-        [DataMember(Name = "rating", IsRequired = true, EmitDefaultValue = true)]
-        public string Rating { get; set; }
+        [DataMember(Name = "rating")]
+        public string? Rating { get; set; }
 
         /// <summary>
         /// The driver&#39;s image url
         /// </summary>
         /// <value>The driver&#39;s image url</value>
-        [DataMember(Name = "image_url", EmitDefaultValue = false)]
-        public string ImageUrl { get; set; }
+        [DataMember(Name = "image_url")]
+        public string? ImageUrl { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,7 +79,7 @@ namespace LyftAPI.Models
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }

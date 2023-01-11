@@ -21,8 +21,7 @@ namespace LyftAPI.Controllers
 
         [HttpGet]
         [Route("/rides/{id}")]
-        [Produces("application/json")]
-        public async Task<ActionResult<RideDetail>> GetUserRide([FromRoute] string id)
+        public async Task<IActionResult> GetUserRide([FromRoute] string id)
         {
             _logger.LogInformation($"[LyftAPI::UserController::GetUserRide] Method invoked with RideID: {id}");
 
