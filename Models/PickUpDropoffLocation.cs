@@ -7,16 +7,16 @@ namespace LyftAPI.Models
     [DataContract(Name = "PickupDropoffLocation")]
     public class PickupDropoffLocation : IEquatable<PickupDropoffLocation>
     {
-        [DataMember(Name = "lat")]
+        [DataMember]
         public double Lat { get; set; }
 
-        [DataMember(Name = "lng")]
+        [DataMember]
         public double Lng { get; set; }
 
-        [DataMember(Name = "address")]
+        [DataMember]
         public string Address { get; set; }
 
-        [DataMember(Name = "time")]
+        [DataMember]
         public DateTimeOffset? Time { get; set; }
         public override string ToString()
         {

@@ -5,19 +5,16 @@ using Newtonsoft.Json;
 
 namespace LyftAPI.Models
 {
-    [DataContract(Name = "DriverDetail")]
+    [DataContract]
     public class DriverDetail : IEquatable<DriverDetail>
     {
-        [DataMember(Name= "first_name")]
+        [DataMember]
         public string? FirstName { get; set; }
-
-        [DataMember(Name= "phone_number")]
+        [DataMember]
         public string? PhoneNumber { get; set; }
-
-        [DataMember(Name="rating")]
+        [DataMember]
         public string? Rating { get; set; }
-
-        [DataMember(Name = "image_url")]
+        [DataMember]
         public string ImageUrl { get; set; } = "Exempt";
 
         public override string ToString()

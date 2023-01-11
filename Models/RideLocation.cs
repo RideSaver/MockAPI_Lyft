@@ -7,16 +7,16 @@ namespace LyftAPI.Models
     [DataContract(Name = "RideLocation")]
     public class RideLocation : IEquatable<RideLocation>
     {
-        [DataMember(Name = "lat")]
+        [DataMember]
         public double Lat { get; set; }
 
-        [DataMember(Name = "lng")]
+        [DataMember]
         public double Lng { get; set; }
 
-        [DataMember(Name = "address")]
+        [DataMember]
         public string Address { get; set; }
 
-        [DataMember(Name = "eta_seconds")]
+        [DataMember]
         public int? EtaSeconds { get; set; }
         public override string ToString()
         {

@@ -16,70 +16,70 @@ namespace LyftAPI.Models
     [DataContract]
     public class RideDetail : IEquatable<RideDetail>
     { 
-        [DataMember(Name = "status")]
         [JsonConverter(typeof(StringEnumConverter))]
+        [DataMember]
         public RideStatusEnum? Status { get; set; } = RideStatusEnum.PendingEnum;
 
-        [DataMember(Name = "rideType")]
         [JsonConverter(typeof(StringEnumConverter))]
+        [DataMember]
         public RideTypeEnumWithOther? RideType { get; set; } = RideTypeEnumWithOther.LyftEnum;
 
-        [DataMember(Name = "rideId")]
+        [DataMember]
         public string RideId { get; set; }
 
-        [DataMember(Name = "passenger")]
+        [DataMember]
         public PassengerDetail? Passenger { get; set; }
 
-        [DataMember(Name = "driver")]
+        [DataMember]
         public DriverDetail? Driver { get; set; }
 
-        [DataMember(Name = "vehicle")]
+        [DataMember]
         public VehicleDetail? Vehicle { get; set; }
 
-        [DataMember(Name = "origin")]
+        [DataMember]
         public RideLocation? Origin { get; set; }
 
-        [DataMember(Name = "destination")]
+        [DataMember]
         public RideLocation? Destination { get; set; }
 
-        [DataMember(Name = "pickup")]
+        [DataMember]
         public PickupDropoffLocation? Pickup { get; set; }
 
-        [DataMember(Name = "dropoff")]
+        [DataMember]
         public PickupDropoffLocation? Dropoff { get; set; }
 
-        [DataMember(Name = "location")]
+        [DataMember]
         public RideLocation? Location { get; set; }
 
-        [DataMember(Name = "primetimePercentage")]
+        [DataMember]
         public string? PrimetimePercentage { get; set; }
 
-        [DataMember(Name = "price")]
+        [DataMember]
         public Cost? Price { get; set; }
 
-        [DataMember(Name = "lineItems")]
+        [DataMember]
         public List<LineItem>? LineItems { get; set; }
 
-        [DataMember(Name = "canCancel")]
         [JsonConverter(typeof(StringEnumConverter))]
+        [DataMember]
         public List<RideDetail.CanCancelEnum>? CanCancel { get; set; }
 
-        [DataMember(Name = "canceledBy")]
+        [DataMember]
         public string? CanceledBy { get; set; }
 
-        [DataMember(Name = "cancellationPrice")]
+        [DataMember]
         public CancellationCost? CancellationPrice { get; set; }
 
-        [DataMember(Name = "rating")]
+        [DataMember]
         public int? Rating { get; set; }
 
-        [DataMember(Name = "feedback")]
+        [DataMember]
         public string? Feedback { get; set; }
 
-        [DataMember(Name = "routeUrl")]
+        [DataMember]
         public string RouteUrl { get; set; } = "Exempt";
 
-        [DataMember(Name = "requestedAt")]
+        [DataMember]
         public DateTimeOffset? RequestedAt { get; set; }
 
         [JsonConverter(typeof(StringEnumConverter))]

@@ -8,13 +8,13 @@ namespace LyftAPI.Models
     [DataContract(Name = "LineItem")]
     public class LineItem : IEquatable<LineItem>
     {
-        [DataMember(Name = "type")]
+        [DataMember]
         public string? Type { get; set; }
 
-        [DataMember(Name = "amount")]
+        [DataMember]
         public int? Amount { get; set; }
 
-        [DataMember(Name = "currency")]
+        [DataMember]
         public string? Currency { get; set; }
         public override string ToString()
         {

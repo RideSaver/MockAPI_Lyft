@@ -8,13 +8,13 @@ namespace LyftAPI.Models
     [DataContract(Name = "Cost")]
     public class Cost : IEquatable<Cost>
     {
-        [DataMember(Name = "amount")]
+        [DataMember]
         public int? Amount { get; set; }
 
-        [DataMember(Name = "currency")]
+        [DataMember]
         public string? Currency { get; set; }
 
-        [DataMember(Name = "description")]
+        [DataMember]
         public string? Description { get; set; }
         public override string ToString()
         {
