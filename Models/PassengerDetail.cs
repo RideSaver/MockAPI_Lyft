@@ -1,11 +1,12 @@
 using System.Text;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace LyftAPI.Models
 {
     [DataContract(Name = "PassengerDetail")]
-    public class PassengerDetail : IEquatable<PassengerDetail>
+    public class PassengerDetail : IEquatable<PassengerDetail>, IValidatableObject
     {
         [JsonConstructorAttribute]
         protected PassengerDetail() { }
@@ -79,9 +80,12 @@ namespace LyftAPI.Models
                 return hashCode;
             }
         }
-
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
         #region Operators
-        #pragma warning disable 1591
+#pragma warning disable 1591
 
         public static bool operator ==(PassengerDetail left, PassengerDetail right)
         {
