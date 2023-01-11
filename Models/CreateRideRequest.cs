@@ -9,8 +9,6 @@ namespace LyftAPI.Models
     public class CreateRideRequest : IEquatable<CreateRideRequest> , IValidatableObject
     {
         [JsonConstructorAttribute]
-        protected CreateRideRequest() { }
-
         public CreateRideRequest(string? costToken = default(string), RideTypeEnum rideType = default(RideTypeEnum), Location origin = default(Location), Location destination = default(Location), PassengerDetail? passenger = default(PassengerDetail))
         {
             this.CostToken = costToken;
@@ -20,10 +18,10 @@ namespace LyftAPI.Models
             this.Passenger = passenger;
         }
 
-        [DataMember(Name = "ride_type", EmitDefaultValue = false)]
+        [DataMember(Name = "rideType", EmitDefaultValue = false)]
         public RideTypeEnum? RideType { get; set; }
 
-        [DataMember(Name = "cost_token", EmitDefaultValue = false)]
+        [DataMember(Name = "costToken", EmitDefaultValue = false)]
         public string? CostToken { get; set; }
 
         [DataMember(Name = "origin", EmitDefaultValue = false)]

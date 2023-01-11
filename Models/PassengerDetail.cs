@@ -9,8 +9,6 @@ namespace LyftAPI.Models
     public class PassengerDetail : IEquatable<PassengerDetail>, IValidatableObject
     {
         [JsonConstructorAttribute]
-        protected PassengerDetail() { }
-
         public PassengerDetail(string? firstName = default(string), string? imageUrl = default(string), string? rating = default(string))
         {
             this.FirstName = firstName;
@@ -22,21 +20,21 @@ namespace LyftAPI.Models
         /// The passenger&#39;s first name
         /// </summary>
         /// <value>The passenger&#39;s first name</value>
-        [DataMember(Name = "first_name", EmitDefaultValue = true)]
+        [DataMember(Name = "firstName", EmitDefaultValue = false)]
         public string? FirstName { get; set; }
 
         /// <summary>
         /// The passenger&#39;s profile image
         /// </summary>
         /// <value>The passenger&#39;s profile image</value>
-        [DataMember(Name = "image_url", EmitDefaultValue = true)]
+        [DataMember(Name = "ImageUrl", EmitDefaultValue = false)]
         public string? ImageUrl { get; set; }
 
         /// <summary>
         /// The passenger&#39;s rating
         /// </summary>
         /// <value>The passenger&#39;s rating</value>
-        [DataMember(Name = "rating", EmitDefaultValue = true)]
+        [DataMember(Name = "rating", EmitDefaultValue = false)]
         public string? Rating { get; set; }
 
         /// <summary>
