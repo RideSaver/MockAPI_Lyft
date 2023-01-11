@@ -1,25 +1,65 @@
 using System.Text;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace LyftAPI.Models
 { 
     [DataContract]
-    public class Location : LatLng, IEquatable<Location>
-    { 
-        [DataMember(Name="address")]
+    public class Location : IEquatable<Location> , IValidatableObject
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Location" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        protected Location() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Location" /> class.
+        /// </summary>
+        /// <param name="lat">The latitude component of a location (required).</param>
+        /// <param name="lng">The longitude component of a location (required).</param>
+        /// <param name="address">A human readable address at/near the given location.</param>
+        public Location(double lat = default(double), double lng = default(double), string address = default(string))
+        {
+            this.Lat = lat;
+            this.Lng = lng;
+            this.Address = address;
+        }
+
+        /// <summary>
+        /// The latitude component of a location
+        /// </summary>
+        /// <value>The latitude component of a location</value>
+        [DataMember(Name = "lat", IsRequired = true, EmitDefaultValue = true)]
+        public double Lat { get; set; }
+
+        /// <summary>
+        /// The longitude component of a location
+        /// </summary>
+        /// <value>The longitude component of a location</value>
+        [DataMember(Name = "lng", IsRequired = true, EmitDefaultValue = true)]
+        public double Lng { get; set; }
+
+        /// <summary>
+        /// A human readable address at/near the given location
+        /// </summary>
+        /// <value>A human readable address at/near the given location</value>
+        [DataMember(Name = "address", EmitDefaultValue = false)]
         public string Address { get; set; }
+
+        /// <summary>
+        /// Returns the string presentation of the object
+        /// </summary>
+        /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class Location {\n");
+            sb.Append("  Lat: ").Append(Lat).Append("\n");
+            sb.Append("  Lng: ").Append(Lng).Append("\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
-        }
-        public  new string ToJson()
-        {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         public override bool Equals(object obj)
@@ -51,9 +91,12 @@ namespace LyftAPI.Models
                 return hashCode;
             }
         }
-
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
         #region Operators
-        #pragma warning disable 1591
+#pragma warning disable 1591
 
         public static bool operator ==(Location left, Location right)
         {
