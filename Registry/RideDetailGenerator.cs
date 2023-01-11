@@ -85,12 +85,7 @@ namespace LyftAPI.Registry
                     RouteUrl = "Exempt",
                     LineItems = new List<LineItem>(),
                     CanCancel = new List<CanCancelEnum>(),
-                    CancellationPrice = new CancellationCost()
-                    {
-                        Token = "CancellationToken",
-                        TokenDuration = 10,
-                        Description = "Cancellation Price Breakdown"
-                    }
+                    CancellationPrice = CC_Faker_CONFIG.Generate()
                 };
 
                 ridesDetail.Add(rideDetail);
