@@ -39,6 +39,7 @@ namespace LyftAPI.Controllers
         [HttpPost]
         [Route("/rides")]
         [Produces("application/json")]
+        [Consumes("application/json")]
         public async Task<ActionResult<Ride>> PostUserRides([FromBody] CreateRideRequest body)
         {
             _logger.LogInformation($"[LyftAPI::UserController::PostUserRides] Method invoked with request body: \n{body}");

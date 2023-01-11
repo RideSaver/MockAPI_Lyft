@@ -9,6 +9,8 @@ namespace LyftAPI.Models
     {
         [JsonConstructorAttribute]
         protected PassengerDetail() { }
+
+        [JsonConstructorAttribute]
         public PassengerDetail(string? firstName = default(string), string? imageUrl = default(string), string? rating = default(string))
         {
             this.FirstName = firstName;

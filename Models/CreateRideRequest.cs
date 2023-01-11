@@ -1,18 +1,27 @@
 using System.Text;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace LyftAPI.Models
 {
     [DataContract(Name = "CreateRideRequest")]
-    public class CreateRideRequest : IEquatable<CreateRideRequest>
+    public class CreateRideRequest : IEquatable<CreateRideRequest> , IValidatableObject
     {
-        [DataMember(Name = "ride_type", EmitDefaultValue = false)]
-        public RideTypeEnum? RideType { get; set; }
-
         [JsonConstructorAttribute]
         protected CreateRideRequest() { }
 
+        [JsonConstructorAttribute]
+        public CreateRideRequest(string? costToken, RideTypeEnum? rideType, Location? origin, Location? destination, PassengerDetail? passenger)
+        {
+            RideType = rideType;
+            CostToken = costToken;
+            Origin = origin;
+            Destination = destination;
+            Passenger = passenger;
+        }
+
+        [JsonConstructorAttribute]
         public CreateRideRequest(string? costToken = default(string), RideTypeEnum rideType = default(RideTypeEnum), Location origin = default(Location), Location destination = default(Location), PassengerDetail? passenger = default(PassengerDetail))
         {
             this.CostToken = costToken;
@@ -21,6 +30,9 @@ namespace LyftAPI.Models
             this.Destination = destination;
             this.Passenger = passenger;
         }
+
+        [DataMember(Name = "ride_type", EmitDefaultValue = false)]
+        public RideTypeEnum? RideType { get; set; }
 
         [DataMember(Name = "cost_token", EmitDefaultValue = false)]
         public string? CostToken { get; set; }
@@ -108,9 +120,12 @@ namespace LyftAPI.Models
                 return hashCode;
             }
         }
-
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
         #region Operators
-        #pragma warning disable 1591
+#pragma warning disable 1591
 
         public static bool operator ==(CreateRideRequest left, CreateRideRequest right)
         {
