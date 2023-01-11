@@ -16,18 +16,18 @@ namespace LyftAPI.Repository
             return rideDetailResponse;
         }
 
-        public InlineResponse200 GetUserRides()
+        public async Task<InlineResponse200> GetUserRides()
         {
             var inlineResponse = new InlineResponse200();
-            inlineResponse.RideHistory = RideDetailGenerator.GenerateRideDetail(10)!;
+            inlineResponse.RideHistory = await Task.FromResult(RideDetailGenerator.GenerateRideDetail(10)!);
 
             return inlineResponse;
         }
 
-        public Ride PostUserRide(CreateRideRequest rideRequest)
+        public async Task<Ride> PostUserRide(CreateRideRequest rideRequest)
         {
             var rideResponse = new Ride();
-            rideResponse = RideGenerator.GenerateRides(1)!.First();
+            rideResponse = await Task.FromResult(RideGenerator.GenerateRides(1)!.First());
 
             return rideResponse;
         }

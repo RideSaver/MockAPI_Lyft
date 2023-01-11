@@ -5,8 +5,8 @@ namespace LyftAPI.Interface
     public interface IUserRepository
     {
         Task<RideDetail> GetUserRide(string id);
-        InlineResponse200 GetUserRides();
-        Ride PostUserRide(CreateRideRequest rideRequest);
-        
+        Task<Ride> PostUserRide(CreateRideRequest rideRequest);
+        Task<InlineResponse200>GetUserRides();
+       
     }
 }
