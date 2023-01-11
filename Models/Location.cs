@@ -9,6 +9,7 @@ namespace LyftAPI.Models
     public class Location : IEquatable<Location> , IValidatableObject
     {
         [JsonConstructorAttribute]
+        public Location() { }
         public Location(double lat = default(double), double lng = default(double), string? address = default(string))
         {
             this.Lat = lat;

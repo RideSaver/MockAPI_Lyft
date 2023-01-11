@@ -9,6 +9,7 @@ namespace LyftAPI.Models
     public class PassengerDetail : IEquatable<PassengerDetail>, IValidatableObject
     {
         [JsonConstructorAttribute]
+        public PassengerDetail() { }
         public PassengerDetail(string? firstName = default(string), string? imageUrl = default(string), string? rating = default(string))
         {
             this.FirstName = firstName;
