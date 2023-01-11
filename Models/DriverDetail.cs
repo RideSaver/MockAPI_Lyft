@@ -20,18 +20,18 @@ namespace LyftAPI.Models
         }
 
         [Required]
-        [DataMember(Name="first_name")]
+        [DataMember(Name="firstName")]
         public string FirstName { get; set; }
 
         [Required]
-        [DataMember(Name="phone_number")]
+        [DataMember(Name="phoneNumber")]
         public string PhoneNumber { get; set; }
 
         [Required]
         [DataMember(Name="rating")]
         public string Rating { get; set; }
 
-        [DataMember(Name="image_url")]
+        [DataMember(Name="imageUrl")]
         public string ImageUrl { get; set; }
 
         public override string ToString()

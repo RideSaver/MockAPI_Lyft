@@ -15,7 +15,7 @@ namespace LyftAPI.Models
         [DataMember(Name = "status", EmitDefaultValue = false)]
         public RideStatusEnum? Status { get; set; }
 
-        [DataMember(Name = "ride_type", EmitDefaultValue = false)]
+        [DataMember(Name = "rideType", EmitDefaultValue = false)]
         public RideTypeEnumWithOther? RideType { get; set; }
 
         [JsonConverter(typeof(StringEnumConverter))]
@@ -55,7 +55,7 @@ namespace LyftAPI.Models
             this.RouteUrl = routeUrl;
             this.RequestedAt = requestedAt;
         }
-        [DataMember(Name = "ride_id", EmitDefaultValue = false)]
+        [DataMember(Name = "rideId", EmitDefaultValue = false)]
         public string RideId { get; set; }
 
         [DataMember(Name = "passenger", EmitDefaultValue = false)]
@@ -82,22 +82,22 @@ namespace LyftAPI.Models
         [DataMember(Name = "location", EmitDefaultValue = false)]
         public RideLocation Location { get; set; }
 
-        [DataMember(Name = "primetime_percentage", EmitDefaultValue = false)]
+        [DataMember(Name = "primetimePercentage", EmitDefaultValue = false)]
         public string PrimetimePercentage { get; set; }
 
         [DataMember(Name = "price", EmitDefaultValue = false)]
         public Cost Price { get; set; }
 
-        [DataMember(Name = "line_items", EmitDefaultValue = false)]
+        [DataMember(Name = "lineItems", EmitDefaultValue = false)]
         public List<LineItem> LineItems { get; set; }
 
-        [DataMember(Name = "can_cancel", EmitDefaultValue = false)]
+        [DataMember(Name = "canCancel", EmitDefaultValue = false)]
         public List<RideDetail.CanCancelEnum> CanCancel { get; set; }
 
-        [DataMember(Name = "canceled_by", EmitDefaultValue = false)]
+        [DataMember(Name = "canceledBy", EmitDefaultValue = false)]
         public string CanceledBy { get; set; }
 
-        [DataMember(Name = "cancellation_price", EmitDefaultValue = false)]
+        [DataMember(Name = "cancellationPrice", EmitDefaultValue = false)]
         public CancellationCost CancellationPrice { get; set; }
 
         [DataMember(Name = "rating", EmitDefaultValue = false)]
@@ -109,7 +109,7 @@ namespace LyftAPI.Models
         [DataMember(Name = "route_url", EmitDefaultValue = false)]
         public string RouteUrl { get; set; }
 
-        [DataMember(Name = "requested_at", EmitDefaultValue = false)]
+        [DataMember(Name = "requestedAt", EmitDefaultValue = false)]
         public DateTimeOffset RequestedAt { get; set; }
         public override string ToString()
         {

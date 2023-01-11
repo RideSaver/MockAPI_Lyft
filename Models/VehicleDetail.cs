@@ -31,16 +31,16 @@ namespace LyftAPI.Models
         [DataMember(Name="year")]
         public int? Year { get; set; }
 
-        [DataMember(Name="license_plate")]
+        [DataMember(Name="licensePlate")]
         public string LicensePlate { get; set; }
 
-        [DataMember(Name="license_plate_state")]
+        [DataMember(Name="licensePlateState")]
         public string LicensePlateState { get; set; }
 
         [DataMember(Name="color")]
         public string Color { get; set; }
 
-        [DataMember(Name="image_url")]
+        [DataMember(Name="imageUrl")]
         public string ImageUrl { get; set; }
         public override string ToString()
         {

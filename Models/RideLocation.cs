@@ -26,7 +26,7 @@ namespace LyftAPI.Models
         [DataMember(Name = "address", EmitDefaultValue = false)]
         public string Address { get; set; }
 
-        [DataMember(Name = "eta_seconds", EmitDefaultValue = false)]
+        [DataMember(Name = "etaSeconds", EmitDefaultValue = false)]
         public int EtaSeconds { get; set; }
         public override string ToString()
         {
