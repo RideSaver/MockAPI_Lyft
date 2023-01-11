@@ -6,22 +6,33 @@ namespace LyftAPI.Models
 {
     [DataContract(Name = "CreateRideRequest")]
     public class CreateRideRequest : IEquatable<CreateRideRequest>
-    { 
+    {
+        [DataMember(Name = "ride_type", EmitDefaultValue = false)]
+        public RideTypeEnum? RideType { get; set; }
+
+        [JsonConstructorAttribute]
+        protected CreateRideRequest() { }
+
+        public CreateRideRequest(string? costToken = default(string), RideTypeEnum? rideType = default(RideTypeEnum?), Location origin = default(Location), Location destination = default(Location), PassengerDetail? passenger = default(PassengerDetail))
+        {
+            this.CostToken = costToken;
+            this.RideType = (RideTypeEnum)rideType;
+            this.Origin = origin;
+            this.Destination = destination;
+            this.Passenger = passenger;
+        }
 
         [DataMember(Name="cost_token")]
-        public string CostToken { get; set; }
-
-        [DataMember(Name="ride_type")]
-        public RideTypeEnum RideType { get; set; }
+        public string? CostToken { get; set; }
 
         [DataMember(Name="origin")]
-        public Location Origin { get; set; }
+        public Location? Origin { get; set; }
 
         [DataMember(Name="destination")]
-        public Location Destination { get; set; }
+        public Location? Destination { get; set; }
 
         [DataMember(Name="passenger")]
-        public PassengerDetail Passenger { get; set; }
+        public PassengerDetail? Passenger { get; set; }
 
         public override string ToString()
         {

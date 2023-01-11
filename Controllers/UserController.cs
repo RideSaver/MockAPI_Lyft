@@ -7,8 +7,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LyftAPI.Controllers
 {
-    [Route("[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class UserController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
