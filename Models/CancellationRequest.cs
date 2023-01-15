@@ -4,11 +4,18 @@ using Newtonsoft.Json;
 
 namespace LyftAPI.Models
 { 
-    [DataContract]
+    [DataContract(Name = "CancellationRequest")]
     public class CancellationRequest : IEquatable<CancellationRequest>
     { 
         [DataMember(Name="cancel_confirmation_token")]
         public string CancelConfirmationToken { get; set; }
+
+        [JsonConstructor]
+        public CancellationRequest() { }
+        public CancellationRequest(string? cancelConfirmationToken = default(string))
+        {
+            this.CancelConfirmationToken = cancelConfirmationToken;
+        }
 
         public override string ToString()
         {
