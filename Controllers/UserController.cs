@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.InteropServices;
 
 namespace LyftAPI.Controllers
 {
@@ -79,9 +80,9 @@ namespace LyftAPI.Controllers
         [HttpPost]
         [Route("/rides/{id}/cancel")]
         [Consumes("application/json")]
-        public IActionResult CancelUserRide(string id, [FromBody] CancellationRequest body)
+        public async Task<IActionResult> CancelUserRide(string id, [FromBody] CancellationRequest? body = null)
         {
-            return new NoContentResult();
+            return await Task.FromResult(new NoContentResult());
         }
 
     }
