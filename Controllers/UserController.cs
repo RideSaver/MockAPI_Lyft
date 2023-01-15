@@ -21,7 +21,8 @@ namespace LyftAPI.Controllers
 
         [HttpGet]
         [Route("/rides/{id}")]
-        public async Task<IActionResult> GetUserRide([FromRoute] string id)
+        [Produces("application/json")]
+        public async Task<IActionResult> GetUserRide(string id)
         {
             _logger.LogInformation($"[LyftAPI::UserController::GetUserRide] Method invoked with RideID: {id}");
 
@@ -77,9 +78,10 @@ namespace LyftAPI.Controllers
 
         [HttpPost]
         [Route("/rides/{id}/cancel")]
-        public IActionResult CancelUserRide([FromRoute][Required] string id, [FromBody] CancellationRequest body)
+        [Consumes("application/json")]
+        public IActionResult CancelUserRide(string id, [FromBody] CancellationRequest body)
         {
-            return new NoContentResult(); // Validation
+            return new NoContentResult();
         }
 
     }
