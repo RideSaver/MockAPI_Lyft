@@ -80,7 +80,7 @@ namespace LyftAPI.Controllers
         [HttpPost]
         [Route("/rides/{id}/cancel")]
         [Consumes("application/json")]
-        public async Task<IActionResult> CancelUserRide(string id, [FromBody] CancellationRequest? body = null)
+        public async Task<IActionResult> CancelUserRide(string id, CancellationRequest body)
         {
             return await Task.FromResult(new NoContentResult());
         }

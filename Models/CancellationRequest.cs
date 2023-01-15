@@ -7,11 +7,10 @@ namespace LyftAPI.Models
     [DataContract(Name = "CancellationRequest")]
     public class CancellationRequest : IEquatable<CancellationRequest>
     { 
-        [DataMember(Name="cancel_confirmation_token")]
-        public string CancelConfirmationToken { get; set; }
+        [DataMember]
+        public string? CancelConfirmationToken { get; set; }
 
         [JsonConstructor]
-        public CancellationRequest() { }
         public CancellationRequest(string? cancelConfirmationToken = default(string))
         {
             this.CancelConfirmationToken = cancelConfirmationToken;
