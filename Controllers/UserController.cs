@@ -20,6 +20,34 @@ namespace LyftAPI.Controllers
             _logger = logger;
         }
 
+        // PostRideRequest (1st API call)
+        [HttpPost]
+        [Route("/rides")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        public async Task<ActionResult<Ride>> PostUserRides([FromBody] CreateRideRequest body)
+        {
+            _logger.LogInformation($"[LyftAPI::UserController::PostUserRides] Method invoked with request body: \n{body}");
+
+            var RideRequest = new CreateRideRequest
+            {
+                RideType = body.RideType,
+                Origin = body.Origin,
+                Destination = body.Destination,
+                Passenger = body.Passenger,
+            };
+
+            if (body is null) { return BadRequest("Invalid data receieved!"); }
+
+            var ride = await _userRepository.PostUserRide(RideRequest);
+            ride.RideId = Guid.NewGuid().ToString();
+
+            _logger.LogInformation($"[LyftAPI::UserController::PostUserRides] Returning (Ride) to the caller... \n{ride}");
+
+            return Content(ride.ToJson(), "application/json");
+        }
+
+        // PostRideRequest (2nd API call) & GetRideRequest
         [HttpGet]
         [Route("/rides/{id}")]
         [Produces("application/json")]
@@ -38,51 +66,23 @@ namespace LyftAPI.Controllers
             return Content(rideDetail.ToJson(), "application/json");
         }
 
-        [HttpPost]
-        [Route("/rides")]
-        [Produces("application/json")]
-        [Consumes("application/json")]
-        public async Task<ActionResult<Ride>> PostUserRides([FromBody] CreateRideRequest body)
-        {
-            _logger.LogInformation($"[LyftAPI::UserController::PostUserRides] Method invoked with request body: \n{body}");
-
-            var RideRequest = new CreateRideRequest
-            {
-                RideType = body.RideType,
-                Origin = body.Origin,
-                Destination = body.Destination,
-                Passenger= body.Passenger,
-            };
-
-            if(body is null) { return BadRequest("Invalid data receieved!"); }
-
-            var ride = await _userRepository.PostUserRide(RideRequest);
-            ride.RideId = Guid.NewGuid().ToString();
-
-            _logger.LogInformation($"[LyftAPI::UserController::PostUserRides] Returning (Ride) to the caller... \n{ride}");
-
-            return Content(ride.ToJson(), "application/json");
-        }
-
-        [HttpGet]
-        [Route("/rides")]
-        public async Task<ActionResult<InlineResponse200>> GetUserRides([FromQuery][Required()] DateTime? startTime, [FromQuery] DateTime? endTime, [FromQuery][Range(0, 50)] int? limit)
-        {
-            _logger.LogInformation($"[LyftAPI::UserController::GetUserRides] Method invoked with query data: \n{startTime}, {endTime}, {limit}");
-
-            var userRides = await _userRepository.GetUserRides();
-
-            _logger.LogInformation($"[LyftAPI::UserController::PostUserRides] Returning (InlineResponse200) to the caller... \n{userRides.RideHistory}");
-
-            return Content(userRides.ToJson(), "application/json");
-        }
-
+        // DeleteRideRequest
         [HttpPost]
         [Route("/rides/{id}/cancel")]
         [Consumes("application/json")]
         public async Task<IActionResult> CancelUserRide(string id, CancellationRequest body)
         {
             return await Task.FromResult(new NoContentResult());
+        }
+
+
+        //-----------------------------------------------------------------[UNUSED]-------------------------------------------------------------//
+        [HttpGet]
+        [Route("/rides")]
+        public async Task<ActionResult<InlineResponse200>> GetUserRides([FromQuery][Required()] DateTime? startTime, [FromQuery] DateTime? endTime, [FromQuery][Range(0, 50)] int? limit)
+        {
+            var userRides = await _userRepository.GetUserRides();
+            return Content(userRides.ToJson(), "application/json");
         }
 
     }

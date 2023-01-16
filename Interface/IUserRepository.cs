@@ -6,7 +6,7 @@ namespace LyftAPI.Interface
     {
         Task<RideDetail> GetUserRide(string id);
         Task<Ride> PostUserRide(CreateRideRequest rideRequest);
-        Task<InlineResponse200>GetUserRides();
+        Task<InlineResponse200>GetUserRides(); // UNUSED
        
     }
 }
